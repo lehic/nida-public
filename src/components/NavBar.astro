@@ -10,7 +10,7 @@ const langs = [
   { k: 'ar', l: 'عربي', href: '/ar/' },
 ];
 ---
-<nav style="display:flex;align-items:center;justify-content:space-between;margin-bottom:100px;direction:ltr">
+<nav class="navbar" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:100px;direction:ltr">
   <a href={lang === 'en' ? '/' : lang === 'fr' ? '/fr' : '/ar'} style="display:flex;align-items:center;gap:10px;text-decoration:none">
     <Kaaba size={22} />
     <span style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-0.02em;color:#F8F6F0">nida</span>

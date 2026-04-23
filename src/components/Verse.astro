@@ -4,7 +4,7 @@ interface Props { t: Copy }
 const { t } = Astro.props;
 const v = t.verse;
 ---
-<section style="position:relative;padding:170px 60px 160px;background:var(--nida-green);color:var(--nida-cream);overflow:hidden;border-top:1px solid var(--nida-gold)">
+<section class="verse-sec" style="position:relative;padding:170px 60px 160px;background:var(--nida-green);color:var(--nida-cream);overflow:hidden;border-top:1px solid var(--nida-gold)">
   <!-- Ghost text -->
   <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Naskh Arabic',serif;font-size:380px;font-weight:500;color:rgba(212,168,67,0.06);letter-spacing:-0.02em;line-height:1;pointer-events:none;white-space:nowrap;direction:rtl;user-select:none">
     نِدَاءً خَفِيًّا
@@ -19,7 +19,7 @@ const v = t.verse;
 
   <!-- Quote -->
   <div style="position:relative;max-width:980px;margin:0 auto;text-align:center">
-    <div style="font-family:var(--serif);font-size:58px;line-height:1.15;font-weight:300;letter-spacing:-0.025em;text-wrap:balance;color:var(--nida-cream)">
+    <div class="verse-quote" style="font-family:var(--serif);font-size:58px;line-height:1.15;font-weight:300;letter-spacing:-0.025em;text-wrap:balance;color:var(--nida-cream)">
       <span style="color:#E8C878;font-size:80px;line-height:0.5;display:inline-block;vertical-align:-0.2em;margin-inline-end:6px;font-style:italic">"</span>
       {v.quote.before}<em style="font-style:italic;color:#E8C878;font-weight:400">{v.quote.em}</em>{v.quote.after}
       <span style="color:#E8C878;font-size:80px;line-height:0.5;display:inline-block;vertical-align:-0.2em;margin-inline-start:6px;font-style:italic">"</span>

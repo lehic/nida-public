@@ -18,12 +18,13 @@ const screenImg = `/assets/screens/home_${lang}.jpg`;
 
 <section
   id="hero-section"
+  class="hero-sec"
   style="position:relative;overflow:hidden;color:#F8F6F0;padding:28px 60px 120px;transition:background 2s linear"
 >
   <div style="max-width:1200px;margin:0 auto">
   <NavBar lang={lang} />
 
-  <div style={`display:grid;grid-template-columns:1.25fr 1fr;gap:70px;align-items:center;margin-top:20px`}>
+  <div class="hero-grid" style={`display:grid;grid-template-columns:1.25fr 1fr;gap:70px;align-items:center;margin-top:20px`}>
     <!-- Left: text -->
     <div>
       <!-- Eyebrow pill -->
@@ -34,7 +35,7 @@ const screenImg = `/assets/screens/home_${lang}.jpg`;
       </div>
 
       <!-- H1 -->
-      <h1 style={`font-size:${dir === 'rtl' ? 74 : 88}px;line-height:${dir === 'rtl' ? 1.15 : 0.98};font-weight:400;letter-spacing:-0.035em;margin:0;text-wrap:balance`}>
+      <h1 class="hero-h1" style={`font-size:${dir === 'rtl' ? 74 : 88}px;line-height:${dir === 'rtl' ? 1.15 : 0.98};font-weight:400;letter-spacing:-0.035em;margin:0;text-wrap:balance`}>
         {hero.h1Parts[0]}<br />
         {hero.h1Parts[1]}<em style="color:#E8C878;font-style:italic">{hero.h1Parts[2]}</em>{hero.h1Parts[3]}
       </h1>
@@ -50,7 +51,7 @@ const screenImg = `/assets/screens/home_${lang}.jpg`;
     </div>
 
     <!-- Right: phone mock -->
-    <div style={`justify-self:${dir === 'rtl' ? 'start' : 'end'};position:relative`}>
+    <div class="hero-phone" style={`justify-self:${dir === 'rtl' ? 'start' : 'end'};position:relative`}>
       <div style="position:absolute;inset:-50px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(232,200,120,0.11) 0%,transparent 65%);filter:blur(24px);pointer-events:none"></div>
       <div style="position:relative">
         <PhoneMock
