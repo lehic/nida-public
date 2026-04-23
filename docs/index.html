@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nida — Free Islamic Prayer Times App for Android | Offline, No Ads</title>
+  <meta name="description" content="Free Muslim prayer times app for Android. Accurate Fajr, Dhuhr, Asr, Maghrib & Isha times, Qibla direction, and prayer tracking. 100% offline, no ads, no data collected.">
+  <meta name="keywords" content="prayer times app, Islamic prayer app, Muslim prayer reminder, salah times, Qibla direction, prayer tracker, offline prayer app, free Muslim app, Android prayer app">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lehic.github.io/nida-public/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lehic.github.io/nida-public/">
+  <meta property="og:title" content="nida — Free Islamic Prayer Times App for Android">
+  <meta property="og:description" content="Accurate prayer times, Qibla direction & prayer tracking. 100% offline, no ads, no tracking. Free forever.">
+  <meta property="og:image" content="https://lehic.github.io/nida-public/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="nida — Free Islamic Prayer Times App">
+  <meta name="twitter:description" content="Accurate prayer times, Qibla & tracking. Offline, no ads, no data.">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "nida — Islamic Prayer Times",
+    "description": "Free Islamic prayer times app for Android. Accurate Fajr, Dhuhr, Asr, Maghrib and Isha prayer times based on GPS location. Includes Qibla compass, prayer tracking, Athan notifications, and home screen widget. 100% offline.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.nidaapp.nida",
+    "author": {
+      "@type": "Person",
+      "name": "Mehdi Mehni"
+    },
+    "keywords": "prayer times, Islamic app, Muslim, Qibla, Athan, Salah, offline"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #0E1C17;
+      --deep:       #143E32;
+      --forest:     #1B5E4B;
+      --surface:    #F8F5EF;
+      --cream:      #F2EDE2;
+      --card:       #FFFFFF;
+      --gold:       #D4A843;
+      --gold-dim:   rgba(212,168,67,0.12);
+      --lime:       #9FE870;
+      --lime-dim:   rgba(159,232,112,0.10);
+      --text:       #1A1A18;
+      --muted:      #7A756C;
+      --faint:      #B8B2A8;
+      --border:     #E2DDD4;
+      --r-sm:6px; --r-md:12px; --r-lg:18px; --r-xl:28px; --r-2xl:40px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',sans-serif; background:var(--surface); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    html[lang="ar"] body, html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-family:'Amiri',serif; }
+    html[lang="ar"] * { letter-spacing:0 !important; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:20px 64px;
+      transition:background 0.3s, backdrop-filter 0.3s;
+    }
+    nav.scrolled { background:rgba(14,28,23,0.94); backdrop-filter:blur(20px); }
+    .nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-icon { width:30px; height:30px; border-radius:8px; display:block; flex-shrink:0; }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:#fff; letter-spacing:3px; }
+    .app-icon-hero { width:72px; height:72px; border-radius:20px; overflow:hidden; margin-bottom:28px; box-shadow:0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08); flex-shrink:0; }
+    .app-icon-hero img { width:100%; height:100%; display:block; }
+    .lang-selector { display:flex; gap:4px; }
+    .lang-btn {
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+      border-radius:100px; padding:5px 14px;
+      font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500;
+      color:rgba(255,255,255,0.55); cursor:pointer; transition:all 0.2s;
+    }
+    .lang-btn:hover { background:rgba(255,255,255,0.15); color:#fff; }
+    .lang-btn.active { background:var(--gold); border-color:var(--gold); color:var(--ink); font-weight:600; }
+
+    /* ── ① VALUE PROPOSITION ─────────────────────── */
+    .vp-section {
+      position:relative; min-height:100vh;
+      background:var(--ink);
+      display:flex; align-items:center;
+      overflow:hidden;
+    }
+    .vp-bg {
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(ellipse 80% 70% at -10% 50%, rgba(20,62,50,0.9) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 110% 80%, rgba(212,168,67,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 40% at 60% 20%, rgba(159,232,112,0.04) 0%, transparent 50%);
+    }
+    .geo { position:absolute; inset:0; pointer-events:none; opacity:0.03; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5'%3E%3Cpolygon points='40,4 76,22 76,58 40,76 4,58 4,22'/%3E%3Cpolygon points='40,14 66,27 66,53 40,66 14,53 14,27'/%3E%3C/g%3E%3C/svg%3E"); }
+    .vp-inner { position:relative; z-index:2; padding:160px 64px 100px; max-width:1100px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .vp-left { }
+    .vp-label { display:inline-flex; align-items:center; gap:12px; margin-bottom:28px; }
+    .vp-label-line { width:36px; height:1px; background:var(--gold); }
+    .vp-label-text { font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+
+    /* THE BIG STATEMENT */
+    .vp-statement {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(64px, 7vw, 96px);
+      font-weight:600; line-height:0.95; letter-spacing:-2px;
+      color:#fff; margin-bottom:32px;
+    }
+    .vp-statement .accent { font-style:italic; color:var(--gold); display:block; }
+    .vp-tagline { font-size:16px; font-weight:300; color:rgba(255,255,255,0.5); line-height:1.7; max-width:420px; margin-bottom:48px; }
+    .cta-primary {
+      display:inline-flex; align-items:center; gap:14px;
+      background:#000; color:#fff;
+      border-radius:14px; padding:14px 28px;
+      font-weight:500; font-size:15px; text-decoration:none;
+      box-shadow:0 4px 24px rgba(0,0,0,0.5);
+      border:1px solid rgba(255,255,255,0.12);
+      transition:all 0.2s;
+    }
+    .cta-primary:hover { background:#1a1a1a; transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,0.6); }
+    .cta-primary.cta-hero { background:var(--gold); color:var(--ink); border-color:transparent; box-shadow:0 4px 32px rgba(212,168,67,0.45); }
+    .cta-primary.cta-hero:hover { background:#e8b93a; transform:translateY(-2px); box-shadow:0 8px 40px rgba(212,168,67,0.6); }
+    .cta-primary.on-light { background:#000; border-color:rgba(0,0,0,0.08); }
+    .cta-primary.on-light:hover { background:#1a1a1a; box-shadow:0 8px 32px rgba(0,0,0,0.25); }
+    .badge-sub { font-size:11px; font-weight:400; opacity:0.6; display:block; letter-spacing:0.3px; }
+    .badge-main { font-size:17px; font-weight:600; display:block; letter-spacing:-0.3px; }
+    .vp-pills { display:flex; gap:24px; margin-top:28px; flex-wrap:wrap; }
+    .vp-pill { font-size:12px; color:rgba(255,255,255,0.3); display:flex; align-items:center; gap:6px; }
+    .vp-pill::before { content:'·'; color:var(--lime); font-size:18px; }
+    .vp-pill:first-child::before { display:none; }
+
+    /* Hero phone preview */
+    .hero-phone-wrap { display:flex; justify-content:center; align-items:center; }
+    .hero-phone-mobile { display:none; }
+    .hero-phone-frame {
+      width:220px; aspect-ratio:9/19.5;
+      background:#0a1a14; border-radius:36px;
+      border:5px solid rgba(255,255,255,0.12);
+      overflow:hidden;
+      box-shadow:0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.08);
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero-phone-frame:hover { transform:translateY(-6px); box-shadow:0 52px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1); }
+    .hero-phone-frame img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+
+    /* Prayer widget (kept for reference, replaced in HTML) */
+    .prayer-widget {
+      background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+      border-radius:var(--r-2xl); padding:32px;
+      backdrop-filter:blur(12px);
+      box-shadow:0 32px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .widget-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .widget-date { font-size:12px; color:rgba(255,255,255,0.3); letter-spacing:0.5px; }
+    .widget-city { font-size:12px; color:var(--gold); font-weight:500; }
+    .widget-prayers { display:flex; flex-direction:column; gap:4px; }
+    .wp { display:flex; align-items:center; justify-content:space-between; padding:11px 14px; border-radius:var(--r-md); }
+    .wp.active { background:var(--lime-dim); border:1px solid rgba(159,232,112,0.18); }
+    .wp-left { display:flex; align-items:center; gap:10px; }
+    .wp-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,0.15); flex-shrink:0; }
+    .wp.active .wp-dot { background:var(--lime); }
+    .wp-name { font-size:13px; font-weight:500; color:rgba(255,255,255,0.65); }
+    .wp.active .wp-name { color:#fff; }
+    .wp-time { font-family:'Cormorant Garamond',serif; font-size:16px; color:rgba(255,255,255,0.3); }
+    .wp.active .wp-time { color:var(--lime); }
+    .widget-footer { margin-top:20px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; gap:8px; }
+    .wf-label { font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:0.5px; }
+    .wf-value { font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--lime); font-weight:600; }
+
+    /* ── TRUST STATEMENT ─────────────────────────── */
+    .trust-statement {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--r-xl);
+    }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .trust-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .trust-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .trust-desc {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* ── MARQUEE ──────────────────────────────────── */
+    .marquee { background:var(--gold); overflow:hidden; padding:14px 0; }
+    .marquee-track { display:flex; gap:0; animation:marquee 20s linear infinite; width:max-content; }
+    @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    .marquee-item { display:inline-flex; align-items:center; gap:16px; padding:0 28px; font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:700; color:var(--ink); white-space:nowrap; letter-spacing:0.5px; }
+    .marquee-sep { opacity:0.35; font-size:9px; }
+
+    /* ── ② PROMISE ────────────────────────────────── */
+    .promise-section {
+      background:var(--deep);
+      padding:120px 64px;
+      position:relative; overflow:hidden;
+      text-align:center;
+    }
+    .promise-section::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(159,232,112,0.05) 0%, transparent 70%);
+    }
+    .promise-inner { max-width:800px; margin:0 auto; position:relative; z-index:1; }
+    .promise-eyebrow { display:inline-flex; align-items:center; gap:12px; margin-bottom:32px; }
+    .promise-line { width:36px; height:1px; background:var(--gold); }
+    .promise-label { font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+    .promise-title {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(42px, 5vw, 68px);
+      font-weight:600; line-height:1.05; letter-spacing:-1px;
+      color:#fff; margin-bottom:28px;
+    }
+    .promise-title em { font-style:italic; color:var(--gold); }
+    .promise-body { font-size:17px; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.75; max-width:600px; margin:0 auto 48px; }
+    .promise-stats { display:flex; justify-content:center; gap:64px; flex-wrap:wrap; }
+    .stat { text-align:center; }
+    .stat-number { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:700; color:#fff; line-height:1; letter-spacing:-2px; display:block; }
+    .stat-label { font-size:12px; color:rgba(255,255,255,0.3); margin-top:6px; letter-spacing:1px; text-transform:uppercase; display:block; }
+    .stat-sep { width:1px; background:rgba(255,255,255,0.08); align-self:stretch; }
+
+    /* ── ③ VALUES ─────────────────────────────────── */
+    .values-section { background:var(--surface); padding:120px 64px; }
+    .values-inner { max-width:1100px; margin:0 auto; }
+    .values-header { margin-bottom:60px; }
+    .section-label { display:inline-flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .s-line { width:24px; height:1px; background:var(--gold); }
+    .s-text { font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--gold); }
+    .section-heading {
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(36px, 4vw, 52px); font-weight:600; line-height:1.1;
+      letter-spacing:-1px; color:var(--ink);
+    }
+    .section-heading em { font-style:italic; color:var(--forest); }
+    .values-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:2px; background:var(--border); border-radius:var(--r-xl); overflow:hidden; }
+    .value-card {
+      background:var(--card); padding:48px 36px;
+      display:flex; flex-direction:column;
+      transition:background 0.2s;
+    }
+    .value-card:hover { background:var(--cream); }
+    .value-number {
+      font-family:'Cormorant Garamond',serif;
+      font-size:64px; font-weight:600; line-height:1;
+      color:var(--border); margin-bottom:24px;
+      transition:color 0.2s;
+    }
+    .value-card:hover .value-number { color:var(--gold); }
+    .value-icon { font-size:32px; margin-bottom:16px; display:block; }
+    .value-title { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--ink); margin-bottom:12px; letter-spacing:-0.3px; }
+    .value-desc { font-size:14px; color:var(--muted); line-height:1.65; flex:1; }
+    .value-tag { margin-top:24px; display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:100px; background:var(--gold-dim); font-size:12px; font-weight:600; color:var(--gold); align-self:flex-start; }
+
+    /* ── ④ FEATURES ───────────────────────────────── */
+    .features-section { background:var(--cream); padding:120px 64px; }
+    .features-inner { max-width:1100px; margin:0 auto; }
+    .features-header { margin-bottom:60px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+    .features-header-right { font-size:14px; color:var(--muted); }
+    .features-header-right strong { color:var(--text); }
+
+    /* FEATURED big card */
+    .feat-hero {
+      background:var(--deep); border-radius:var(--r-xl);
+      padding:52px; margin-bottom:16px;
+      display:grid; grid-template-columns:1.2fr 1fr; gap:64px; align-items:center;
+      position:relative; overflow:hidden;
+    }
+    .feat-hero::before { content:''; position:absolute; top:-80px; right:-80px; width:260px; height:260px; background:radial-gradient(circle, rgba(159,232,112,0.10) 0%, transparent 70%); }
+    .feat-hero-left { }
+    .feat-hero-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:100px; background:rgba(159,232,112,0.12); border:1px solid rgba(159,232,112,0.2); font-size:12px; font-weight:600; color:var(--lime); margin-bottom:20px; }
+    .feat-hero-title { font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:600; color:#fff; line-height:1.1; letter-spacing:-0.5px; margin-bottom:16px; }
+    .feat-hero-desc { font-size:15px; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:24px; }
+    .feat-hero-chips { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip { padding:5px 12px; border-radius:100px; border:1px solid rgba(255,255,255,0.12); font-size:12px; color:rgba(255,255,255,0.4); }
+    .feat-hero-right { }
+    .method-list { display:flex; flex-direction:column; gap:6px; }
+    .method-item { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--r-md); background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); }
+    .method-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.15); flex-shrink:0; }
+    .method-item.highlight .method-dot { background:var(--gold); }
+    .method-name { font-size:13px; color:rgba(255,255,255,0.55); font-weight:500; }
+    .method-region { font-size:11px; color:rgba(255,255,255,0.2); margin-left:auto; }
+
+    /* Features 3-col grid */
+    .feat-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:16px; }
+    .feat-card {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--r-xl); padding:32px;
+      transition:all 0.2s; position:relative;
+    }
+    .feat-card:hover { border-color:var(--gold); box-shadow:0 8px 32px rgba(14,28,23,0.08); transform:translateY(-2px); }
+    .feat-icon { font-size:28px; margin-bottom:16px; display:block; }
+    .feat-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--ink); margin-bottom:8px; letter-spacing:-0.2px; }
+    .feat-desc { font-size:13px; color:var(--muted); line-height:1.6; }
+    .feat-badge { position:absolute; top:16px; right:16px; padding:3px 10px; border-radius:100px; background:var(--gold-dim); font-size:11px; font-weight:600; color:var(--gold); }
+    .feat-badge.new { background:rgba(159,232,112,0.12); color:var(--lime); border:1px solid rgba(159,232,112,0.2); }
+
+    /* Full-width highlight row */
+    .feat-wide-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .feat-wide {
+      background:var(--ink); border-radius:var(--r-xl);
+      padding:40px; display:grid; grid-template-columns:1fr auto;
+      gap:32px; align-items:center;
+    }
+    .feat-wide-title { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:#fff; margin-bottom:8px; letter-spacing:-0.3px; }
+    .feat-wide-desc { font-size:14px; color:rgba(255,255,255,0.45); line-height:1.6; }
+    .feat-wide-icon { font-size:48px; opacity:0.6; }
+
+    /* Languages strip */
+    .lang-strip {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--r-xl); padding:32px; margin-top:16px;
+      display:flex; align-items:center; gap:32px; flex-wrap:wrap;
+    }
+    .lang-strip-left { flex:1; min-width:200px; }
+    .lang-strip-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--ink); margin-bottom:6px; }
+    .lang-strip-desc { font-size:13px; color:var(--muted); }
+    .lang-flags { display:flex; gap:8px; flex-wrap:wrap; }
+    .lang-flag { padding:6px 16px; border-radius:100px; background:var(--cream); border:1px solid var(--border); font-size:13px; font-weight:500; color:var(--text); }
+
+    /* ── SCREENSHOTS ──────────────────────────────── */
+    .screens-section { background:var(--surface); padding:120px 64px; }
+    .screens-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .screens-copy { }
+    .screens-copy .section-heading { margin-bottom:20px; }
+    .screens-body { font-size:15px; color:var(--muted); line-height:1.75; margin-bottom:36px; }
+    .phones-row { display:flex; gap:16px; align-items:flex-end; }
+    .phone { background:var(--deep); border-radius:36px; border:5px solid #0a1a14; overflow:hidden; box-shadow:0 24px 64px rgba(14,28,23,0.2); display:flex; align-items:center; justify-content:center; }
+    .phone.p1 { width:160px; aspect-ratio:9/19.5; }
+    .phone.p2 { width:140px; aspect-ratio:9/19.5; margin-bottom:20px; opacity:0.75; }
+    .phone.p3 { width:120px; aspect-ratio:9/19.5; margin-bottom:40px; opacity:0.5; }
+    .phone img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+    .phone-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; height:100%; color:rgba(255,255,255,0.2); font-size:11px; text-align:center; padding:16px; }
+    .phone-placeholder-icon { font-size:24px; opacity:0.4; }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    .footer-wrap { background:var(--ink); }
+    footer { max-width:1100px; margin:0 auto; padding:48px 64px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+    .footer-name { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:#fff; letter-spacing:2px; display:block; }
+    .footer-sub { font-size:13px; color:rgba(255,255,255,0.2); margin-top:4px; }
+    .footer-links { display:flex; gap:32px; align-items:center; flex-wrap:wrap; }
+    .footer-link { font-size:13px; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.15s; }
+    .footer-link:hover { color:var(--gold); }
+    .footer-copy { font-size:12px; color:rgba(255,255,255,0.15); }
+
+    /* ── RTL ──────────────────────────────────────── */
+    html[dir="rtl"] nav { flex-direction:row-reverse; }
+    html[dir="rtl"] .lang-selector { flex-direction:row-reverse; }
+    html[dir="rtl"] .vp-inner { direction:rtl; }
+    html[dir="rtl"] .vp-label { flex-direction:row-reverse; }
+    html[dir="rtl"] .promise-eyebrow { flex-direction:row-reverse; }
+    html[dir="rtl"] .section-label { flex-direction:row-reverse; }
+    html[dir="rtl"] .values-grid { direction:rtl; }
+    html[dir="rtl"] .feat-hero { direction:rtl; }
+    html[dir="rtl"] .feat-grid { direction:rtl; }
+    html[dir="rtl"] .feat-wide-row { direction:rtl; }
+    html[dir="rtl"] .feat-wide { direction:rtl; }
+    html[dir="rtl"] .screens-inner { direction:rtl; }
+    html[dir="rtl"] footer { flex-direction:row-reverse; }
+    html[dir="rtl"] .footer-links { flex-direction:row-reverse; }
+    html[dir="rtl"] .wp-left { flex-direction:row-reverse; }
+    html[dir="rtl"] .widget-header { flex-direction:row-reverse; }
+    html[dir="rtl"] .widget-footer { flex-direction:row-reverse; }
+    html[dir="rtl"] .method-item { flex-direction:row-reverse; }
+    html[dir="rtl"] .feat-badge { right:auto; left:16px; }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width:960px) {
+      .vp-inner { grid-template-columns:1fr; padding:120px 40px 60px; }
+      .hero-phone-wrap { display:none; }
+      .hero-phone-mobile { display:flex; justify-content:center; margin:32px 0; }
+      .hero-phone-mobile .hero-phone-frame { width:200px; transform:none; }
+      .values-grid { grid-template-columns:1fr 1fr; }
+      .feat-hero { grid-template-columns:1fr; }
+      .feat-hero-right { display:none; }
+      .feat-grid { grid-template-columns:1fr 1fr; }
+      .feat-wide-row { grid-template-columns:1fr; }
+      .screens-inner { grid-template-columns:1fr; }
+      nav { padding:20px 32px; }
+      .promise-section,.values-section,.features-section,.screens-section { padding:80px 32px; }
+      footer { padding:40px 32px; }
+    }
+    @media (max-width:600px) {
+      nav { padding:16px 20px; }
+      .lang-btn { padding:5px 10px; font-size:11px; }
+      .vp-inner { padding:80px 20px 60px; }
+      .vp-statement { font-size:44px; letter-spacing:-1.5px; }
+      .vp-tagline { font-size:15px; margin-bottom:36px; }
+      .app-icon-hero { width:60px; height:60px; border-radius:16px; margin-bottom:20px; }
+      .cta-primary { padding:13px 22px; font-size:14px; gap:10px; }
+      .badge-main { font-size:15px; }
+      .trust-statement { padding:20px; }
+      .promise-stats { gap:20px; flex-direction:column; align-items:center; }
+      .stat-sep { display:none; }
+      .stat-number { font-size:40px; }
+      .promise-section,.values-section,.features-section,.screens-section { padding:60px 20px; }
+      .promise-title { font-size:32px; }
+      .section-heading { font-size:28px; }
+      .values-grid { grid-template-columns:1fr; }
+      .feat-grid { grid-template-columns:1fr; }
+      .feat-wide-row { gap:16px; }
+      .lang-strip { gap:12px; flex-wrap:wrap; justify-content:center; }
+      .hero-phone-frame { width:150px; }
+      .phones-row { justify-content:center; gap:10px; }
+      .phone.p1 { width:140px; }
+      .phone.p2 { width:115px; }
+      .phone.p3 { width:95px; }
+      .screens-copy h2 { font-size:28px; }
+      footer { padding:32px 20px; flex-direction:column; align-items:flex-start; gap:16px; }
+      .marquee-text { font-size:13px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <img src="icon.svg" alt="nida" class="nav-icon">
+    <span class="nav-logo">nida</span>
+  </a>
+  <div class="lang-selector">
+    <button class="lang-btn active" onclick="setLang('en')" data-lang="en">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')" data-lang="fr">FR</button>
+    <button class="lang-btn" onclick="setLang('ar')" data-lang="ar">AR</button>
+  </div>
+</nav>
+
+<!-- ① VALUE PROPOSITION -->
+<section class="vp-section">
+  <div class="vp-bg"></div>
+  <div class="geo"></div>
+  <div class="vp-inner">
+    <div class="vp-left">
+      <div class="app-icon-hero">
+        <img src="icon.svg" alt="nida — Islamic prayer times app icon">
+      </div>
+      <div class="vp-label">
+        <div class="vp-label-line"></div>
+        <span class="vp-label-text" data-i18n="vp-label">The prayer times app</span>
+      </div>
+      <h1 class="vp-statement">
+        <span data-i18n="vp-line1">Never miss</span>
+        <span class="accent" data-i18n="vp-line2">a prayer.</span>
+      </h1>
+      <p class="vp-tagline" data-i18n="vp-tagline">Accurate times for every prayer, wherever you are. Fully offline. No account. No tracking. Just the call to prayer.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.nidaapp.nida" class="cta-primary cta-hero" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.609 1.814L13.792 12 3.61 22.186a.99.99 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#EA4335"/><path d="M17.04 8.248L5.753 1.945l-.144-.13 10.183 10.183 1.248-3.75z" fill="#FBBC04"/><path d="M20.583 10.63c.555.318.84.801.84 1.37s-.285 1.052-.84 1.37l-2.65 1.522-1.44-1.44.013-.013 1.427-1.425 2.65-1.385z" fill="#4285F4"/><path d="M5.608 22.185l.145-.13L17.04 15.75l-1.248-3.75L5.608 22.185z" fill="#34A853"/></svg>
+        <span><span class="badge-sub" data-i18n="badge-sub">Get it on</span><span class="badge-main">Google Play</span></span>
+      </a>
+      <!-- Phone preview — mobile only, between CTA and trust -->
+      <div class="hero-phone-mobile">
+        <div class="hero-phone-frame">
+          <img src="screenshots/home.png" alt="nida prayer times app — home screen">
+        </div>
+      </div>
+      <!-- Trust statement — explicit, prominent -->
+      <div class="trust-statement">
+        <div class="trust-item">
+          <span class="trust-icon">🆓</span>
+          <div><span class="trust-title" data-i18n="trust1-title">Free. Forever.</span><span class="trust-desc" data-i18n="trust1-desc">No ads. No premium tier. No subscriptions. nida is free and will always be free.</span></div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">📵</span>
+          <div><span class="trust-title" data-i18n="trust2-title">100% offline.</span><span class="trust-desc" data-i18n="trust2-desc">All calculations happen on your device. No internet ever required.</span></div>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🔒</span>
+          <div><span class="trust-title" data-i18n="trust3-title">Your data never leaves your phone.</span><span class="trust-desc" data-i18n="trust3-desc">No server. No analytics. No crash reporters. We track nothing.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-phone-wrap">
+      <div class="hero-phone-frame">
+        <img src="screenshots/home.png" alt="nida prayer times app — Maghrib countdown and today's prayers">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Fajr <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Dhuhr <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Asr <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Maghrib <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Isha <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">الفجر <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">العصر <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">المغرب <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Fajr <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Dhuhr <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Asr <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Maghrib <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Isha <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">الفجر <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">العصر <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">المغرب <span class="marquee-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- ② PROMISE -->
+<section class="promise-section">
+  <div class="promise-inner">
+    <div class="promise-eyebrow">
+      <div class="promise-line"></div>
+      <span class="promise-label" data-i18n="promise-label">Our promise</span>
+      <div class="promise-line"></div>
+    </div>
+    <h2 class="promise-title" data-i18n="promise-title">Accurate times. Every prayer. <em>Always.</em></h2>
+    <p class="promise-body" data-i18n="promise-body">nida uses the most rigorous astronomical calculations, auto-detects the right method for your region, and works fully offline. Whether you're home or travelling, the call to prayer finds you.</p>
+    <div class="promise-stats">
+      <div class="stat">
+        <span class="stat-number">190+</span>
+        <span class="stat-label" data-i18n="stat1">Countries</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-number">10+</span>
+        <span class="stat-label" data-i18n="stat2">Calculation methods</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-number">7</span>
+        <span class="stat-label" data-i18n="stat3">Languages</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-number">0</span>
+        <span class="stat-label" data-i18n="stat4">Data collected</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="values-header">
+      <div class="section-label"><div class="s-line"></div><span class="s-text" data-i18n="values-label">Our values</span></div>
+      <h2 class="section-heading" data-i18n="values-title">What <em>nida stands for</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-number">01</div>
+        <span class="value-icon">🎯</span>
+        <p class="value-title" data-i18n="v1-title">Accuracy</p>
+        <p class="value-desc" data-i18n="v1-desc">Prayer times calculated using proven astronomical models. Multiple scholarly methods supported. Auto-detected for your region. Asr adapts to your madhab.</p>
+        <span class="value-tag" data-i18n="v1-tag">Science meets fiqh</span>
+      </div>
+      <div class="value-card">
+        <div class="value-number">02</div>
+        <span class="value-icon">🔒</span>
+        <p class="value-title" data-i18n="v2-title">Privacy</p>
+        <p class="value-desc" data-i18n="v2-desc">No account, no server, no analytics. Your location and prayer history never leave your device. nida has zero data collection by design.</p>
+        <span class="value-tag" data-i18n="v2-tag">Zero data collected</span>
+      </div>
+      <div class="value-card">
+        <div class="value-number">03</div>
+        <span class="value-icon">🕌</span>
+        <p class="value-title" data-i18n="v3-title">Tradition</p>
+        <p class="value-desc" data-i18n="v3-desc">Traditional vocal athan only — no music. Islamic compliance is reviewed for every feature. Scholarly disagreement becomes a user setting, never a hardcoded choice.</p>
+        <span class="value-tag" data-i18n="v3-tag">Fiqh-reviewed</span>
+      </div>
+      <div class="value-card">
+        <div class="value-number">04</div>
+        <span class="value-icon">⚡</span>
+        <p class="value-title" data-i18n="v4-title">Simplicity</p>
+        <p class="value-desc" data-i18n="v4-desc">One purpose: never miss a prayer. No social features, no ads, no premium tier. nida does one thing and does it with precision.</p>
+        <span class="value-tag" data-i18n="v4-tag">One job, done right</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ④ FEATURES -->
+<section class="features-section">
+  <div class="features-inner">
+    <div class="features-header">
+      <div>
+        <div class="section-label"><div class="s-line"></div><span class="s-text" data-i18n="feat-label">Features</span></div>
+        <h2 class="section-heading" data-i18n="feat-title">Everything <em>nida can do</em></h2>
+      </div>
+      <span class="features-header-right"><strong data-i18n="feat-count">19</strong> <span data-i18n="feat-count-sub">features, all free</span></span>
+    </div>
+
+    <!-- Hero feature: Prayer times -->
+    <div class="feat-hero">
+      <div class="feat-hero-left">
+        <span class="feat-hero-badge" data-i18n="fh-badge">● Core feature</span>
+        <p class="feat-hero-title" data-i18n="fh-title">Precise prayer times for any city in the world</p>
+        <p class="feat-hero-desc" data-i18n="fh-desc">GPS auto-detection or manual city selection. Times calculated on-device using your chosen method. Supports Shafi'i and Hanafi Asr calculations. Manual timezone override available.</p>
+        <div class="feat-hero-chips">
+          <span class="chip" data-i18n="chip-gps">GPS auto-detect</span>
+          <span class="chip" data-i18n="chip-manual">Manual city</span>
+          <span class="chip" data-i18n="chip-offline">Fully offline</span>
+          <span class="chip" data-i18n="chip-shafii">Shafi'i / Hanafi</span>
+        </div>
+      </div>
+      <div class="feat-hero-right">
+        <div class="method-list">
+          <div class="method-item highlight"><span class="method-dot"></span><span class="method-name">Muslim World League</span><span class="method-region">Global</span></div>
+          <div class="method-item"><span class="method-dot"></span><span class="method-name">Umm al-Qura</span><span class="method-region">Gulf</span></div>
+          <div class="method-item"><span class="method-dot"></span><span class="method-name">ISNA</span><span class="method-region">N. America</span></div>
+          <div class="method-item"><span class="method-dot"></span><span class="method-name">Egyptian Authority</span><span class="method-region">Egypt</span></div>
+          <div class="method-item"><span class="method-dot"></span><span class="method-name">Karachi</span><span class="method-region">South Asia</span></div>
+          <div class="method-item"><span class="method-dot"></span><span class="method-name" data-i18n="method-more">+ 6 more methods</span><span class="method-region">…</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-column grid -->
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="feat-icon">🔔</span>
+        <p class="feat-title" data-i18n="f2-title">Athan notifications</p>
+        <p class="feat-desc" data-i18n="f2-desc">Traditional muezzin recitation at every prayer time. Per-prayer on/off toggle.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">⏰</span>
+        <p class="feat-title" data-i18n="f3-title">Advance reminders</p>
+        <p class="feat-desc" data-i18n="f3-desc">Set a reminder minutes before each prayer so you're never caught off guard.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🎙️</span>
+        <p class="feat-title" data-i18n="f4-title">Multiple muezzin voices</p>
+        <p class="feat-desc" data-i18n="f4-desc">Choose from several traditional athan recitations. Beep or silent options also available.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🧭</span>
+        <p class="feat-title" data-i18n="f5-title">Qibla compass</p>
+        <p class="feat-desc" data-i18n="f5-desc">Real-time compass pointing to the Kaaba. Great-circle calculation — the scholarly consensus.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📍</span>
+        <p class="feat-title" data-i18n="f6-title">Distance to Mecca</p>
+        <p class="feat-desc" data-i18n="f6-desc">Shows your exact distance from the Masjid al-Haram.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📿</span>
+        <p class="feat-title" data-i18n="f7-title">Prayer tracking</p>
+        <p class="feat-desc" data-i18n="f7-desc">Mark each prayer as done. Track your consistency week over week. All data stays local.</p>
+        <span class="feat-badge new">New</span>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🔁</span>
+        <p class="feat-title" data-i18n="f8-title">Follow-up reminders</p>
+        <p class="feat-desc" data-i18n="f8-desc">Missed a prayer? nida sends a gentle follow-up reminder after a configurable delay.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📊</span>
+        <p class="feat-title" data-i18n="f9-title">Weekly stats</p>
+        <p class="feat-desc" data-i18n="f9-desc">See how many prayers you completed this week vs last week. Simple, motivating, private.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">📖</span>
+        <p class="feat-title" data-i18n="f10-title">Prayer guide</p>
+        <p class="feat-desc" data-i18n="f10-desc">Step-by-step illustrated guide to performing each prayer correctly. Obligatory, occasional, and night prayers.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🌗</span>
+        <p class="feat-title" data-i18n="f11-title">Light, dark & system theme</p>
+        <p class="feat-desc" data-i18n="f11-desc">Follows your system preference automatically, or set it manually.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🕐</span>
+        <p class="feat-title" data-i18n="f12-title">Shurooq time</p>
+        <p class="feat-desc" data-i18n="f12-desc">Sunrise time displayed — relevant for Fajr completion and voluntary prayers.</p>
+      </div>
+      <div class="feat-card">
+        <span class="feat-icon">🏠</span>
+        <p class="feat-title" data-i18n="f13-title">Home screen widget</p>
+        <p class="feat-desc" data-i18n="f13-desc">See the next prayer directly from your home screen, without opening the app.</p>
+      </div>
+    </div>
+
+    <!-- Wide row: offline + timezone -->
+    <div class="feat-wide-row" style="margin-top:16px;">
+      <div class="feat-wide">
+        <div>
+          <p class="feat-wide-title" data-i18n="fw1-title">100% offline</p>
+          <p class="feat-wide-desc" data-i18n="fw1-desc">All calculations happen on your device. No internet connection ever required. Works in airplane mode, in remote areas, anywhere.</p>
+        </div>
+        <span class="feat-wide-icon">📵</span>
+      </div>
+      <div class="feat-wide">
+        <div>
+          <p class="feat-wide-title" data-i18n="fw2-title">Timezone control</p>
+          <p class="feat-wide-desc" data-i18n="fw2-desc">Use your phone's timezone automatically, or override it manually when travelling across timezones.</p>
+        </div>
+        <span class="feat-wide-icon">🌍</span>
+      </div>
+    </div>
+
+    <!-- Languages strip -->
+    <div class="lang-strip">
+      <div class="lang-strip-left">
+        <p class="lang-strip-title" data-i18n="lang-title">Available in 7 languages</p>
+        <p class="lang-strip-desc" data-i18n="lang-desc">Interface fully localized including Arabic (RTL).</p>
+      </div>
+      <div class="lang-flags">
+        <span class="lang-flag">🇬🇧 English</span>
+        <span class="lang-flag">🇫🇷 Français</span>
+        <span class="lang-flag">🇸🇦 العربية</span>
+        <span class="lang-flag">🇹🇷 Türkçe</span>
+        <span class="lang-flag">🇮🇩 Indonesia</span>
+        <span class="lang-flag">🇵🇰 اردو</span>
+        <span class="lang-flag">🇧🇩 বাংলা</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screens-section">
+  <div class="screens-inner">
+    <div class="screens-copy">
+      <div class="section-label"><div class="s-line"></div><span class="s-text" data-i18n="screens-label">App preview</span></div>
+      <h2 class="section-heading" data-i18n="screens-title">Clean. Fast. <em>Focused.</em></h2>
+      <p class="screens-body" data-i18n="screens-body">No clutter. No subscriptions. No notifications that aren't prayers. nida shows you what matters and nothing else.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.nidaapp.nida" class="cta-primary on-light" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.609 1.814L13.792 12 3.61 22.186a.99.99 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#EA4335"/><path d="M17.04 8.248L5.753 1.945l-.144-.13 10.183 10.183 1.248-3.75z" fill="#FBBC04"/><path d="M20.583 10.63c.555.318.84.801.84 1.37s-.285 1.052-.84 1.37l-2.65 1.522-1.44-1.44.013-.013 1.427-1.425 2.65-1.385z" fill="#4285F4"/><path d="M5.608 22.185l.145-.13L17.04 15.75l-1.248-3.75L5.608 22.185z" fill="#34A853"/></svg>
+        <span><span class="badge-sub" data-i18n="badge-sub">Get it on</span><span class="badge-main">Google Play</span></span>
+      </a>
+    </div>
+    <div class="phones-row">
+      <div class="phone p1"><img src="screenshots/home.png" alt="nida prayer times app — home screen showing Maghrib countdown and today's Fajr, Dhuhr, Asr, Maghrib, Isha prayers in Paris"></div>
+      <div class="phone p2"><img src="screenshots/qibla.png" alt="nida Qibla direction compass showing 58.7° bearing towards Mecca — 9,998 km"></div>
+      <div class="phone p3"><img src="screenshots/tracking.png" alt="nida prayer tracking — 3 consecutive days streak and weekly salah progress"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-wrap">
+  <footer>
+    <div>
+      <span class="footer-name">nida</span>
+      <span class="footer-sub" data-i18n="footer-sub">The call to prayer.</span>
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html" class="footer-link" data-i18n="privacy" data-privacy-href="privacy.html">Privacy Policy</a>
+      <span class="footer-copy" data-i18n="copyright">© 2025 nida</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+const T = {
+  en:{
+    "vp-label":"The prayer times app","vp-line1":"Never miss","vp-line2":"a prayer.",
+    "vp-tagline":"Accurate times for every prayer, wherever you are. Fully offline. No account. No tracking. Just the call to prayer.",
+    "badge-sub":"Get it on","pill-free":"Free","pill-offline":"Works offline","pill-noaccount":"No account","pill-notrack":"No tracking",
+    "trust1-title":"Free. Forever.","trust1-desc":"No ads. No premium tier. No subscriptions. nida is free and will always be free.",
+    "trust2-title":"100% offline.","trust2-desc":"All calculations happen on your device. No internet ever required.",
+    "trust3-title":"Your data never leaves your phone.","trust3-desc":"No server. No analytics. No crash reporters. We track nothing.",
+    "w-date":"Tuesday, 22 April","w-city":"Paris, FR","p1":"Fajr","p2":"Dhuhr","p3":"Asr","p4":"Maghrib","p5":"Isha",
+    "w-next":"NEXT ·","w-countdown":"Maghrib in 3h 44min",
+    "promise-label":"Our promise","promise-title":"Accurate times. Every prayer. Always.",
+    "promise-body":"nida uses the most rigorous astronomical calculations, auto-detects the right method for your region, and works fully offline. Whether you're home or travelling, the call to prayer finds you.",
+    "stat1":"Countries","stat2":"Calculation methods","stat3":"Languages","stat4":"Data collected",
+    "values-label":"Our values","values-title":"What nida stands for",
+    "v1-title":"Accuracy","v1-desc":"Prayer times calculated using proven astronomical models. Multiple scholarly methods supported. Auto-detected for your region. Asr adapts to your madhab.","v1-tag":"Science meets fiqh",
+    "v2-title":"Privacy","v2-desc":"No account, no server, no analytics. Your location and prayer history never leave your device. nida has zero data collection by design.","v2-tag":"Zero data collected",
+    "v3-title":"Tradition","v3-desc":"Traditional vocal athan only — no music. Islamic compliance reviewed for every feature. Scholarly disagreement becomes a user setting, never a hardcoded choice.","v3-tag":"Fiqh-reviewed",
+    "v4-title":"Simplicity","v4-desc":"One purpose: never miss a prayer. No social features, no ads, no premium tier. nida does one thing and does it with precision.","v4-tag":"One job, done right",
+    "feat-label":"Features","feat-title":"Everything nida can do","feat-count":"19","feat-count-sub":"features, all free",
+    "fh-badge":"● Core feature","fh-title":"Precise prayer times for any city in the world",
+    "fh-desc":"GPS auto-detection or manual city selection. Times calculated on-device using your chosen method. Supports Shafi'i and Hanafi Asr calculations. Manual timezone override available.",
+    "chip-gps":"GPS auto-detect","chip-manual":"Manual city","chip-offline":"Fully offline","chip-shafii":"Shafi'i / Hanafi",
+    "method-more":"+ 6 more methods",
+    "f2-title":"Athan notifications","f2-desc":"Traditional muezzin recitation at every prayer time. Per-prayer on/off toggle.",
+    "f3-title":"Advance reminders","f3-desc":"Set a reminder minutes before each prayer so you're never caught off guard.",
+    "f4-title":"Multiple muezzin voices","f4-desc":"Choose from several traditional athan recitations. Beep or silent options also available.",
+    "f5-title":"Qibla compass","f5-desc":"Real-time compass pointing to the Kaaba. Great-circle calculation — the scholarly consensus.",
+    "f6-title":"Distance to Mecca","f6-desc":"Shows your exact distance from the Masjid al-Haram.",
+    "f7-title":"Prayer tracking","f7-desc":"Mark each prayer as done. Track your consistency week over week. All data stays local.",
+    "f8-title":"Follow-up reminders","f8-desc":"Missed a prayer? nida sends a gentle follow-up reminder after a configurable delay.",
+    "f9-title":"Weekly stats","f9-desc":"See how many prayers you completed this week vs last week. Simple, motivating, private.",
+    "f10-title":"Prayer guide","f10-desc":"Step-by-step illustrated guide to performing each prayer correctly. Obligatory, occasional, and night prayers.",
+    "f11-title":"Light, dark & system theme","f11-desc":"Follows your system preference automatically, or set it manually.",
+    "f12-title":"Shurooq time","f12-desc":"Sunrise time displayed — relevant for Fajr completion and voluntary prayers.",
+    "f13-title":"Home screen widget","f13-desc":"See the next prayer directly from your home screen, without opening the app.",
+    "fw1-title":"100% offline","fw1-desc":"All calculations happen on your device. No internet connection ever required. Works in airplane mode, in remote areas, anywhere.",
+    "fw2-title":"Timezone control","fw2-desc":"Use your phone's timezone automatically, or override it manually when travelling across timezones.",
+    "lang-title":"Available in 7 languages","lang-desc":"Interface fully localized including Arabic (RTL).",
+    "screens-label":"App preview","screens-title":"Clean. Fast. Focused.","screens-body":"No clutter. No subscriptions. No notifications that aren't prayers. nida shows you what matters and nothing else.",
+    "ph1":"Home","ph2":"Notifications","ph3":"Qibla",
+    "footer-sub":"The call to prayer.","privacy":"Privacy Policy","privacy-href":"privacy.html","copyright":"© 2025 nida",
+  },
+  fr:{
+    "vp-label":"L'app de prière","vp-line1":"Ne manque jamais","vp-line2":"une prière.",
+    "vp-tagline":"Horaires précis pour chaque prière, où que tu sois. Entièrement hors ligne. Sans compte. Sans tracking. Juste l'appel à la prière.",
+    "badge-sub":"Télécharger sur","pill-free":"Gratuit","pill-offline":"Hors ligne","pill-noaccount":"Sans compte","pill-notrack":"Sans tracking",
+    "trust1-title":"Gratuit. Pour toujours.","trust1-desc":"Pas de pub. Pas d'abonnement. Pas de version premium. nida est gratuit et le restera.",
+    "trust2-title":"100% hors ligne.","trust2-desc":"Tout est calculé sur ton appareil. Aucune connexion internet requise.",
+    "trust3-title":"Tes données ne quittent jamais ton téléphone.","trust3-desc":"Pas de serveur. Pas d'analytics. Pas de crash reporter. On ne tracke rien.",
+    "w-date":"Mardi 22 avril","w-city":"Paris, FR","p1":"Fajr","p2":"Dhuhr","p3":"Asr","p4":"Maghrib","p5":"Isha",
+    "w-next":"PROCHAINE ·","w-countdown":"Maghrib dans 3h 44min",
+    "promise-label":"Notre promesse","promise-title":"Horaires précis. Chaque prière. Toujours.",
+    "promise-body":"nida utilise les calculs astronomiques les plus rigoureux, détecte automatiquement la bonne méthode pour ta région, et fonctionne entièrement hors ligne. Que tu sois chez toi ou en voyage, l'appel à la prière te trouve.",
+    "stat1":"Pays","stat2":"Méthodes de calcul","stat3":"Langues","stat4":"Données collectées",
+    "values-label":"Nos valeurs","values-title":"Ce que représente nida",
+    "v1-title":"Précision","v1-desc":"Horaires calculés selon des modèles astronomiques éprouvés. Plusieurs méthodes savantes supportées. Auto-détection pour ta région. Asr adapté à ton madhab.","v1-tag":"Science et fiqh",
+    "v2-title":"Confidentialité","v2-desc":"Pas de compte, pas de serveur, pas d'analytics. Ta position et ton historique de prières ne quittent jamais ton appareil.","v2-tag":"Zéro donnée collectée",
+    "v3-title":"Tradition","v3-desc":"Athan vocal traditionnel uniquement — pas de musique. Conformité islamique examinée pour chaque fonctionnalité. Les désaccords savants deviennent des paramètres utilisateur.","v3-tag":"Conforme au fiqh",
+    "v4-title":"Simplicité","v4-desc":"Un seul objectif : ne jamais manquer une prière. Pas de réseaux sociaux, pas de pub, pas d'abonnement. nida fait une chose et la fait avec précision.","v4-tag":"Un travail, bien fait",
+    "feat-label":"Fonctionnalités","feat-title":"Tout ce que nida sait faire","feat-count":"19","feat-count-sub":"fonctionnalités, toutes gratuites",
+    "fh-badge":"● Fonctionnalité principale","fh-title":"Horaires précis pour toute ville dans le monde",
+    "fh-desc":"Détection GPS ou ville manuelle. Temps calculés sur l'appareil avec ta méthode choisie. Supporte Shafi'i et Hanafi pour Asr. Fuseau horaire manuel disponible.",
+    "chip-gps":"GPS auto","chip-manual":"Ville manuelle","chip-offline":"Hors ligne","chip-shafii":"Shafi'i / Hanafi",
+    "method-more":"+ 6 autres méthodes",
+    "f2-title":"Notifications athan","f2-desc":"Récitation muezzin traditionnelle à chaque heure de prière. Activation par prière.",
+    "f3-title":"Rappels anticipés","f3-desc":"Configure un rappel minutes avant chaque prière.",
+    "f4-title":"Plusieurs voix de muezzin","f4-desc":"Choisis parmi plusieurs récitations d'athan traditionnelles. Bip ou silencieux aussi disponibles.",
+    "f5-title":"Boussole Qibla","f5-desc":"Boussole en temps réel vers la Kaaba. Méthode orthodromique — consensus savant.",
+    "f6-title":"Distance à La Mecque","f6-desc":"Affiche ta distance exacte depuis la Masjid al-Haram.",
+    "f7-title":"Suivi des prières","f7-desc":"Marque chaque prière comme accomplie. Suis ta régularité semaine par semaine. Données locales.",
+    "f8-title":"Rappels de suivi","f8-desc":"Prière manquée ? nida envoie un rappel discret après un délai configurable.",
+    "f9-title":"Stats hebdomadaires","f9-desc":"Vois combien de prières tu as accomplies cette semaine vs la semaine dernière.",
+    "f10-title":"Guide de prière","f10-desc":"Guide illustré étape par étape pour accomplir chaque prière correctement.",
+    "f11-title":"Thème clair, sombre & système","f11-desc":"Suit automatiquement ton système, ou configure manuellement.",
+    "f12-title":"Heure de Shurooq","f12-desc":"Heure du lever du soleil — utile pour la fin du Fajr et les prières volontaires.",
+    "f13-title":"Widget écran d'accueil","f13-desc":"Voir la prochaine prière depuis l'écran d'accueil, sans ouvrir l'app.",
+    "fw1-title":"100% hors ligne","fw1-desc":"Tout est calculé sur ton appareil. Aucune connexion requise. Fonctionne en mode avion, partout.",
+    "fw2-title":"Contrôle du fuseau horaire","fw2-desc":"Utilise le fuseau de ton téléphone automatiquement, ou remplace-le manuellement en voyage.",
+    "lang-title":"Disponible en 7 langues","lang-desc":"Interface entièrement localisée dont l'arabe (RTL).",
+    "screens-label":"Aperçu","screens-title":"Épuré. Rapide. Focalisé.","screens-body":"Pas de désordre. Pas d'abonnements. Pas de notifications qui ne sont pas des prières. nida te montre ce qui compte.",
+    "ph1":"Accueil","ph2":"Notifications","ph3":"Qibla",
+    "footer-sub":"L'appel à la prière.","privacy":"Politique de confidentialité","privacy-href":"privacy.html","copyright":"© 2025 nida",
+  },
+  ar:{
+    "vp-label":"تطبيق مواقيت الصلاة","vp-line1":"لا تفوّتك","vp-line2":"صلاة أبدًا.",
+    "vp-tagline":"مواقيت دقيقة لكل صلاة، أينما كنت. يعمل بالكامل بدون إنترنت. بدون حساب. بدون تتبع. مجرد نداء الصلاة.",
+    "badge-sub":"احصل عليه من","pill-free":"مجاني","pill-offline":"بدون إنترنت","pill-noaccount":"بدون حساب","pill-notrack":"بدون تتبع",
+    "trust1-title":"مجاني. للأبد.","trust1-desc":"لا إعلانات. لا اشتراك. لا نسخة مدفوعة. نداء مجاني وسيبقى كذلك.",
+    "trust2-title":"١٠٠٪ بدون إنترنت.","trust2-desc":"جميع الحسابات تتم على جهازك. لا اتصال بالإنترنت مطلوب أبدًا.",
+    "trust3-title":"بياناتك لا تغادر هاتفك أبدًا.","trust3-desc":"لا خادم. لا تحليلات. لا تقارير أعطال. لا نتتبع شيئًا.",
+    "w-date":"الثلاثاء ٢٢ أبريل","w-city":"باريس، فرنسا","p1":"الفجر","p2":"الظهر","p3":"العصر","p4":"المغرب","p5":"العشاء",
+    "w-next":"التالية ·","w-countdown":"المغرب بعد ٣س ٤٤د",
+    "promise-label":"وعدنا","promise-title":"مواقيت دقيقة. كل صلاة. دائمًا.",
+    "promise-body":"يستخدم نداء أدق الحسابات الفلكية، ويكتشف تلقائيًا الطريقة الصحيحة لمنطقتك، ويعمل بالكامل بدون إنترنت. سواء كنت في البيت أو في السفر، يجد نداء نداء الصلاة.",
+    "stat1":"دولة","stat2":"طرق حساب","stat3":"لغات","stat4":"بيانات مجمّعة",
+    "values-label":"قيمنا","values-title":"ما يمثّله نداء",
+    "v1-title":"الدقة","v1-desc":"مواقيت محسوبة بنماذج فلكية مُثبَتة. طرق علمية متعددة. كشف تلقائي لمنطقتك. وقت العصر يتكيف مع مذهبك.","v1-tag":"العلم والفقه معًا",
+    "v2-title":"الخصوصية","v2-desc":"لا حساب، لا خادم، لا تحليلات. موقعك وسجل صلاتك لا يغادران جهازك أبدًا.","v2-tag":"صفر بيانات مجمّعة",
+    "v3-title":"الأصالة","v3-desc":"أذان صوتي تقليدي فقط — لا موسيقى. كل ميزة مراجعة فقهيًا. الخلاف العلمي يصبح إعدادًا للمستخدم.","v3-tag":"مراجَع فقهيًا",
+    "v4-title":"البساطة","v4-desc":"هدف واحد: لا تفوّتك صلاة. لا ميزات اجتماعية، لا إعلانات، لا اشتراك. نداء يفعل شيئًا واحدًا بإتقان.","v4-tag":"عمل واحد بإتقان",
+    "feat-label":"المميزات","feat-title":"كل ما يستطيع نداء فعله","feat-count":"١٩","feat-count-sub":"ميزة، جميعها مجانية",
+    "fh-badge":"● الميزة الرئيسية","fh-title":"مواقيت دقيقة لأي مدينة في العالم",
+    "fh-desc":"كشف GPS تلقائي أو اختيار مدينة يدوي. الأوقات تُحسب على الجهاز. يدعم حساب العصر عند الشافعية والحنفية. تعديل يدوي للمنطقة الزمنية متاح.",
+    "chip-gps":"GPS تلقائي","chip-manual":"مدينة يدوية","chip-offline":"بالكامل بدون إنترنت","chip-shafii":"شافعي / حنفي",
+    "method-more":"+ ٦ طرق أخرى",
+    "f2-title":"إشعارات الأذان","f2-desc":"تلاوة مؤذن تقليدية عند كل وقت صلاة. تفعيل/تعطيل لكل صلاة.",
+    "f3-title":"تذكيرات مسبقة","f3-desc":"اضبط تذكيرًا قبل كل صلاة بدقائق.",
+    "f4-title":"أصوات مؤذن متعددة","f4-desc":"اختر من عدة تلاوات أذان تقليدية. صفارة أو صامت متاحان أيضًا.",
+    "f5-title":"بوصلة القبلة","f5-desc":"بوصلة حية نحو الكعبة. حساب الدائرة العظمى — الإجماع العلمي.",
+    "f6-title":"المسافة إلى مكة","f6-desc":"يُظهر مسافتك الدقيقة من المسجد الحرام.",
+    "f7-title":"تتبع الصلوات","f7-desc":"سجّل كل صلاة كمنجزة. تابع انتظامك أسبوعًا بأسبوع. جميع البيانات محلية.",
+    "f8-title":"تذكيرات المتابعة","f8-desc":"فاتتك صلاة؟ يرسل نداء تذكيرًا لطيفًا بعد تأخير قابل للضبط.",
+    "f9-title":"إحصائيات أسبوعية","f9-desc":"انظر كم صلاة أكملت هذا الأسبوع مقارنة بالأسبوع الماضي.",
+    "f10-title":"دليل الصلاة","f10-desc":"دليل مصوّر خطوة بخطوة لأداء كل صلاة بشكل صحيح.",
+    "f11-title":"وضع فاتح، داكن ونظام","f11-desc":"يتبع إعداد نظامك تلقائيًا، أو اضبطه يدويًا.",
+    "f12-title":"وقت الشروق","f12-desc":"يُعرض وقت الشروق — مفيد لنهاية الفجر والصلوات التطوعية.",
+    "f13-title":"ودجت الشاشة الرئيسية","f13-desc":"اعرض الصلاة التالية مباشرة من شاشتك الرئيسية دون فتح التطبيق.",
+    "fw1-title":"١٠٠٪ بدون إنترنت","fw1-desc":"جميع الحسابات تتم على جهازك. لا اتصال بالإنترنت مطلوب. يعمل في وضع الطيران، في المناطق النائية، في أي مكان.",
+    "fw2-title":"التحكم في المنطقة الزمنية","fw2-desc":"استخدم منطقة هاتفك تلقائيًا، أو تجاوزها يدويًا عند السفر.",
+    "lang-title":"متوفر بـ ٧ لغات","lang-desc":"واجهة مترجمة بالكامل بما فيها العربية (RTL).",
+    "screens-label":"معاينة التطبيق","screens-title":"نظيف. سريع. مُركَّز.","screens-body":"لا فوضى. لا اشتراكات. لا إشعارات ليست صلوات. نداء يُظهر لك ما يهم فقط.",
+    "ph1":"الرئيسية","ph2":"الإشعارات","ph3":"القبلة",
+    "footer-sub":"نداء الصلاة.","privacy":"سياسة الخصوصية","privacy-href":"privacy.html","copyright":"© ٢٠٢٥ نداء",
+  }
+};
+
+function detectLang() {
+  const code = (navigator.language||'en').slice(0,2).toLowerCase();
+  return ['fr','ar'].includes(code)?code:'en';
+}
+function setLang(lang) {
+  const d = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (d[k]) el.textContent = d[k];
+  });
+  const pl = document.querySelector('[data-privacy-href]');
+  if (pl && d['privacy-href']) pl.href = d['privacy-href'];
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', lang==='ar'?'rtl':'ltr');
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+}
+setLang(detectLang());
+</script>
+</body>
+</html>
