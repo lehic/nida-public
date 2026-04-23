@@ -5,6 +5,7 @@ const { t } = Astro.props;
 const p = t.pillars;
 ---
 <section style="padding:90px 60px;background:var(--nida-cream-deep)">
+  <div style="max-width:1200px;margin:0 auto">
   <div style="display:grid;grid-template-columns:1fr 2fr;gap:60px;margin-bottom:70px">
     <div>
       <div class="eyebrow">{p.eyebrow}</div>
@@ -26,5 +27,6 @@ const p = t.pillars;
         <p style="font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--nida-stone);font-weight:300;text-wrap:pretty">{item.d}</p>
       </div>
     ))}
+  </div>
   </div>
 </section>
