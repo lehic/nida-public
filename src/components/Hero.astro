@@ -59,6 +59,18 @@ const screenImg = `/assets/screens/home_${lang}.jpg`;
           tilt={tilt}
           shadow="0 60px 120px -30px rgba(0,0,0,0.6),0 0 0 1px rgba(245,242,232,0.08)"
         />
+        <!-- NextPrayerBadge — live countdown, positioned below-left (or below-right for RTL) -->
+        <div
+          id="np-badge"
+          aria-label="Next prayer countdown"
+          style={`position:absolute;bottom:-28px;${dir === 'rtl' ? 'right' : 'left'}:-40px;background:rgba(10,14,10,0.78);border:1px solid rgba(212,168,67,0.28);border-radius:14px;padding:14px 20px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 48px -12px rgba(0,0,0,0.6),inset 0 1px 0 rgba(245,242,232,0.04);direction:ltr;display:flex;align-items:center;gap:16px;min-width:220px`}
+        >
+          <div style="width:8px;height:8px;border-radius:50%;background:#9FE870;box-shadow:0 0 0 4px rgba(159,232,112,0.18);animation:nidaPulse 2.4s ease-in-out infinite;flex-shrink:0"></div>
+          <div>
+            <div id="np-label" style="font-family:var(--sans);font-size:9px;letter-spacing:0.22em;color:#D4A843;text-transform:uppercase;font-weight:600">NEXT PRAYER · ASR</div>
+            <div id="np-time" style="font-family:var(--sans);font-size:22px;font-weight:300;color:#F5F2E8;letter-spacing:0.04em;margin-top:3px;font-variant-numeric:tabular-nums">00:00:00</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -114,4 +126,40 @@ const screenImg = `/assets/screens/home_${lang}.jpg`;
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     setInterval(updateGradient, 60_000);
   }
+
+  // ── Next Prayer Badge ──────────────────────────────────────
+  const PRAYERS = [
+    { name: 'FAJR',    mins: 5 * 60 + 7  },
+    { name: 'DHUHR',   mins: 13 * 60 + 50 },
+    { name: 'ASR',     mins: 17 * 60 + 43 },
+    { name: 'MAGHRIB', mins: 20 * 60 + 53 },
+    { name: 'ISHA',    mins: 22 * 60 + 33 },
+  ] as const;
+
+  function updateBadge() {
+    const label = document.getElementById('np-label');
+    const time  = document.getElementById('np-time');
+    if (!label || !time) return;
+    const d = new Date();
+    const nowMins = d.getHours() * 60 + d.getMinutes() + d.getSeconds() / 60;
+    let next = PRAYERS.find((p) => p.mins > nowMins);
+    let wrapped = false;
+    if (!next) { next = PRAYERS[0]; wrapped = true; }
+    const deltaMins = (wrapped ? next.mins + 1440 : next.mins) - nowMins;
+    const hh = Math.floor(deltaMins / 60);
+    const mm = Math.floor(deltaMins % 60);
+    const ss = Math.floor((deltaMins * 60) % 60);
+    label.textContent = `NEXT PRAYER · ${next.name}`;
+    time.textContent = `${String(hh).padStart(2, '0')}:${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`;
+  }
+
+  updateBadge();
+  setInterval(updateBadge, 1000);
 </script>
+
+<style>
+  @keyframes nidaPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.55; transform: scale(0.9); }
+  }
+</style>

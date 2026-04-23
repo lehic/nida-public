@@ -11,7 +11,7 @@ const {
   eyebrow = 'iOS',
   name = 'Coming soon',
 } = Astro.props;
-const borderColor = fg === '#FFFFFF' ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.3)';
+const borderColor = (fg === '#FFFFFF' || fg === '#F8F6F0') ? 'rgba(245,242,232,0.35)' : 'rgba(0,0,0,0.3)';
 ---
 <div style={`display:inline-flex;align-items:center;gap:12px;background:transparent;color:${fg};padding:13px 22px;border-radius:12px;border:1px dashed ${borderColor};min-width:200px;font-family:var(--sans);opacity:0.9;pointer-events:none`} aria-label="iOS — coming soon">
   <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">

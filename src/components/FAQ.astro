@@ -12,10 +12,10 @@ const faq = t.faq;
     </h2>
     <div id="faq-list">
       {faq.items.map((item, i) => (
-        <details class="faq-item" data-idx={i} style="border-top:1px solid rgba(107,107,107,0.2)">
+        <details class="faq-item" data-idx={i} open={i === 0} style="border-top:1px solid rgba(107,107,107,0.2)">
           <summary style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:26px 0;cursor:pointer;list-style:none">
             <h3 style="font-size:24px;font-weight:400;letter-spacing:-0.015em;margin:0;text-wrap:pretty">{item.q}</h3>
-            <span class="faq-icon" style="color:var(--nida-gold);font-size:22px;font-family:var(--sans);flex-shrink:0;user-select:none">+</span>
+            <span class="faq-icon" style="color:var(--nida-gold);font-size:22px;font-family:var(--sans);flex-shrink:0;user-select:none">{i === 0 ? '−' : '+'}</span>
           </summary>
           <p style="font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--nida-stone);padding-bottom:26px;max-width:760px;font-weight:300;text-wrap:pretty;margin:0">
             {item.a}
