@@ -1,0 +1,30 @@
+---
+import Kaaba from './Kaaba.astro';
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const langs = [
+  { k: 'en', l: 'EN', href: '/' },
+  { k: 'fr', l: 'FR', href: '/fr/' },
+  { k: 'ar', l: 'عربي', href: '/ar/' },
+];
+---
+<nav style="display:flex;align-items:center;justify-content:space-between;margin-bottom:100px;direction:ltr">
+  <a href={lang === 'en' ? '/' : lang === 'fr' ? '/fr' : '/ar'} style="display:flex;align-items:center;gap:10px;text-decoration:none">
+    <Kaaba size={22} />
+    <span style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-0.02em;color:#F8F6F0">nida</span>
+  </a>
+  <div></div>
+  <div style="display:flex;gap:4px;font-family:var(--sans);font-size:12px;letter-spacing:0.08em;background:rgba(245,242,232,0.04);padding:4px;border-radius:100px;border:1px solid rgba(212,168,67,0.18)">
+    {langs.map(({ k, l, href }) => {
+      const active = lang === k;
+      return (
+        <a
+          href={href}
+          style={`padding:6px 14px;border-radius:100px;background:${active ? 'rgba(212,168,67,0.18)' : 'transparent'};color:${active ? '#D4A843' : 'rgba(245,242,232,0.45)'};font-family:${k === 'ar' ? '"Noto Naskh Arabic",serif' : 'inherit'};font-size:${k === 'ar' ? '14px' : '12px'};font-weight:${active ? 600 : 500};letter-spacing:0.08em;text-decoration:none`}
+        >{l}</a>
+      );
+    })}
+  </div>
+</nav>

@@ -1,0 +1,41 @@
+---
+import type { Copy } from '../i18n/copy';
+import { CALC_ANGLES } from '../i18n/copy';
+interface Props { t: Copy }
+const { t } = Astro.props;
+const m = t.method;
+const dir = t.dir;
+---
+<section style="padding:110px 60px">
+  <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:80px">
+    <div>
+      <div class="eyebrow">{m.eyebrow}</div>
+      <h2 style="font-size:50px;line-height:1.05;font-weight:400;letter-spacing:-0.03em;margin-top:18px;text-wrap:pretty">
+        {m.h2Parts[0]}<br />{m.h2Parts[1]}<em style="color:var(--nida-gold)">{m.h2Parts[2]}</em>{m.h2Parts[3]}
+      </h2>
+      <p style="font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--nida-stone);max-width:460px;margin-top:24px;font-weight:300;text-wrap:pretty">
+        {m.lede}
+      </p>
+    </div>
+    <div>
+      {m.rows.map((row) => {
+        const angles = CALC_ANGLES[row.code] ?? { fajr: '—', isha: '—' };
+        return (
+          <div style="display:grid;grid-template-columns:80px 1fr 90px 100px;gap:16px;padding:20px 0;border-top:1px solid rgba(107,107,107,0.13);align-items:center;direction:ltr">
+            <div style="font-family:var(--sans);font-size:11px;color:var(--nida-gold);letter-spacing:0.1em">{row.code}</div>
+            <div style={`direction:${dir}`}>
+              <div style="font-size:17px">{row.name}</div>
+              <div style="font-family:var(--sans);font-size:12px;color:var(--nida-stone);margin-top:2px">{row.used}</div>
+            </div>
+            <div style="font-family:var(--sans);font-size:13px;color:var(--nida-stone)">
+              <span style="color:var(--nida-gold)">{m.fajr}</span> {angles.fajr}
+            </div>
+            <div style="font-family:var(--sans);font-size:13px;color:var(--nida-stone)">
+              <span style="color:var(--nida-gold)">{m.isha}</span> {angles.isha}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

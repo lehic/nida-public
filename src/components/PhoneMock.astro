@@ -1,0 +1,27 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  width?: number;
+  tilt?: number;
+  shadow?: string;
+  crop?: boolean;
+}
+const {
+  src,
+  alt = '',
+  width = 240,
+  tilt = 0,
+  shadow = '0 40px 80px -30px rgba(0,0,0,0.4)',
+  crop = false,
+} = Astro.props;
+const h = width * 2.1;
+const outerR = width * 0.14;
+const innerR = width * 0.11;
+const cropH = crop ? h * 0.55 : h;
+---
+<div style={`width:${width}px;height:${cropH}px;border-radius:${outerR}px;background:#0A0A0A;padding:8px;transform:rotate(${tilt}deg);box-shadow:${shadow};flex-shrink:0;overflow:hidden`}>
+  <div style={`width:100%;height:${h - 16}px;border-radius:${innerR}px;overflow:hidden;background:#F5F2E8`}>
+    <img src={src} alt={alt} width={width - 16} height={h - 16} style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async" />
+  </div>
+</div>

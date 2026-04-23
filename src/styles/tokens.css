@@ -1,0 +1,52 @@
+:root {
+  --nida-ink:          #143E32;
+  --nida-green:        #163300;
+  --nida-forest-mid:   #1B5E4B;
+  --nida-splash-black: #0A0A0A;
+  --nida-gold:         #D4A843;
+  --nida-gold-soft:    #E8C878;
+  --nida-brand-accent: #9FE870;
+  --nida-cream:        #F8F6F0;
+  --nida-cream-deep:   #F0EDE6;
+  --nida-stone:        #6B6B6B;
+
+  --serif-ltr: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --sans-ltr:  Inter, system-ui, sans-serif;
+  --serif-rtl: "Amiri", "Noto Naskh Arabic", "Fraunces", Georgia, serif;
+  --sans-rtl:  "IBM Plex Sans Arabic", "Noto Sans Arabic", Inter, system-ui, sans-serif;
+
+  --serif: var(--serif-ltr);
+  --sans:  var(--sans-ltr);
+}
+
+[dir="rtl"] {
+  --serif: var(--serif-rtl);
+  --sans:  var(--sans-rtl);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--nida-cream);
+  color: var(--nida-ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+button { font-family: inherit; }
+a { color: inherit; }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--nida-gold);
+  text-transform: uppercase;
+  font-weight: 600;
+}

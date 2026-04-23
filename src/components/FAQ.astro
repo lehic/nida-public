@@ -1,0 +1,50 @@
+---
+import type { Copy } from '../i18n/copy';
+interface Props { t: Copy }
+const { t } = Astro.props;
+const faq = t.faq;
+---
+<section style="padding:110px 60px;background:var(--nida-cream-deep)">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="eyebrow" style="text-align:center">{faq.eyebrow}</div>
+    <h2 style="font-size:54px;line-height:1;font-weight:400;letter-spacing:-0.03em;margin-top:18px;text-align:center;margin-bottom:50px;text-wrap:balance">
+      {faq.h2}
+    </h2>
+    <div id="faq-list">
+      {faq.items.map((item, i) => (
+        <details class="faq-item" data-idx={i} style="border-top:1px solid rgba(107,107,107,0.2)">
+          <summary style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:26px 0;cursor:pointer;list-style:none">
+            <h3 style="font-size:24px;font-weight:400;letter-spacing:-0.015em;margin:0;text-wrap:pretty">{item.q}</h3>
+            <span class="faq-icon" style="color:var(--nida-gold);font-size:22px;font-family:var(--sans);flex-shrink:0;user-select:none">+</span>
+          </summary>
+          <p style="font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--nida-stone);padding-bottom:26px;max-width:760px;font-weight:300;text-wrap:pretty;margin:0">
+            {item.a}
+          </p>
+        </details>
+      ))}
+    </div>
+    <div style="border-top:1px solid rgba(107,107,107,0.2)"></div>
+  </div>
+</section>
+
+<style>
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary { outline: none; }
+  details > summary:focus-visible { outline: 2px solid var(--nida-gold); outline-offset: 2px; }
+</style>
+
+<script>
+  const items = document.querySelectorAll<HTMLDetailsElement>('.faq-item');
+
+  items.forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      if (detail.open) {
+        items.forEach((other) => {
+          if (other !== detail && other.open) other.open = false;
+        });
+      }
+      const icon = detail.querySelector<HTMLElement>('.faq-icon');
+      if (icon) icon.textContent = detail.open ? '−' : '+';
+    });
+  });
+</script>

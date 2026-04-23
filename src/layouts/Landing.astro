@@ -1,0 +1,55 @@
+---
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import type { Lang } from '../i18n/copy';
+
+interface Props {
+  lang: Lang;
+  dir: 'ltr' | 'rtl';
+  title: string;
+  description: string;
+  canonical: string;
+}
+const { lang, dir, title, description, canonical } = Astro.props;
+
+const altLinks = [
+  { lang: 'en', href: 'https://lehic.github.io/nida-public/' },
+  { lang: 'fr', href: 'https://lehic.github.io/nida-public/fr' },
+  { lang: 'ar', href: 'https://lehic.github.io/nida-public/ar' },
+];
+---
+<!DOCTYPE html>
+<html lang={lang} dir={dir}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {altLinks.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+  <link rel="alternate" hreflang="x-default" href="https://lehic.github.io/nida-public/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="nida" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:text={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "nida",
+    "operatingSystem": "Android",
+    "applicationCategory": "LifestyleApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": description,
+  })} />
+
+  <meta name="theme-color" content="#143E32" />
+</head>
+<body>
+  <slot />
+</body>
+</html>
