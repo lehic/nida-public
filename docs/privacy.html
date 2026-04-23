@@ -1,49 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nida — Privacy Policy</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            line-height: 1.7;
-            color: #333;
-        }
-        h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
-        h2 { font-size: 1.3rem; margin-top: 2rem; }
-        .updated { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-        a { color: #1a73e8; }
-        nav { margin-bottom: 2rem; text-align: center; }
-        nav a { margin: 0 0.5rem; text-decoration: none; font-weight: 600; }
-        nav a.active { text-decoration: underline; }
-        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-        th, td { text-align: left; padding: 0.5rem; border-bottom: 1px solid #e0e0e0; }
-        th { font-weight: 600; }
-        .section { display: none; }
-        .section.active { display: block; }
-        [dir="rtl"] { text-align: right; }
-        [dir="rtl"] th, [dir="rtl"] td { text-align: right; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nida — Privacy Policy</title>
+  <meta name="description" content="nida privacy policy — no data collected, no tracking, fully offline." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --green:       #143E32;
+      --green-deep:  #0E2419;
+      --gold:        #D4A843;
+      --gold-soft:   #E8C878;
+      --cream:       #F8F6F0;
+      --cream-deep:  #F0EDE6;
+      --stone:       #6B6B6B;
+      --serif: "Fraunces", Georgia, serif;
+      --sans:  "Inter", system-ui, sans-serif;
+    }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--cream-deep);
+      color: var(--green);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, p, ul, ol { margin: 0; }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--green);
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--cream);
+    }
+    .logo-name {
+      font-family: var(--sans);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(245,242,232,0.6);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--cream); }
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Hero strip ── */
+    .page-hero {
+      background: linear-gradient(180deg, var(--green) 0%, #163300 100%);
+      padding: 64px 40px 72px;
+      color: var(--cream);
+    }
+    .page-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .page-subtitle {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(245,242,232,0.65);
+      font-weight: 300;
+      max-width: 540px;
+    }
+
+    /* ── Lang tabs ── */
+    .lang-bar {
+      background: var(--green-deep);
+      padding: 0 40px;
+      border-bottom: 1px solid rgba(212,168,67,0.12);
+    }
+    .lang-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .lang-bar-inner::-webkit-scrollbar { display: none; }
+    .lang-btn {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(245,242,232,0.45);
+      background: none;
+      border: none;
+      padding: 14px 16px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .lang-btn:hover { color: rgba(245,242,232,0.8); }
+    .lang-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ── Content ── */
+    .content-wrap {
+      padding: 64px 40px 100px;
+    }
+    .content-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .section h2 {
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-top: 48px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(20,62,50,0.12);
+    }
+    .section h2:first-of-type { margin-top: 0; }
+
+    .section p,
+    .section ul,
+    .section li {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--stone);
+      font-weight: 300;
+    }
+    .section p { margin-top: 10px; }
+    .section p strong { color: var(--green); font-weight: 600; }
+
+    .section ul {
+      margin-top: 12px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .section li {
+      padding: 8px 0 8px 20px;
+      position: relative;
+    }
+    .section li::before {
+      content: "◆";
+      color: var(--gold);
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 12px;
+    }
+
+    .updated {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--stone);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-family: var(--sans);
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(20,62,50,0.1);
+    }
+    th {
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(20,62,50,0.04);
+    }
+    td { color: var(--stone); font-weight: 300; }
+
+    [dir="rtl"] th,
+    [dir="rtl"] td { text-align: right; }
+
+    /* ── Bottom CTA ── */
+    .cta-section {
+      background: var(--green);
+      padding: 80px 40px;
+      text-align: center;
+      color: var(--cream);
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .cta-title {
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .cta-sub {
+      font-family: var(--sans);
+      font-size: 16px;
+      color: rgba(245,242,232,0.6);
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--green);
+      background: var(--cream);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--green-deep);
+      padding: 28px 40px;
+      text-align: center;
+    }
+    .site-footer a {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: rgba(245,242,232,0.35);
+      text-decoration: none;
+    }
+    .site-footer a:hover { color: rgba(245,242,232,0.6); }
+
+    @media (max-width: 640px) {
+      .site-header { padding: 0 20px; }
+      .page-hero { padding: 48px 20px 56px; }
+      .page-title { font-size: 40px; }
+      .lang-bar { padding: 0 20px; }
+      .content-wrap { padding: 48px 20px 80px; }
+      .cta-section { padding: 60px 20px; }
+      .cta-title { font-size: 30px; }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="#" onclick="show('en')" id="nav-en">English</a> |
-        <a href="#" onclick="show('fr')" id="nav-fr">Fran&ccedil;ais</a> |
-        <a href="#" onclick="show('ar')" id="nav-ar">العربية</a> |
-        <a href="#" onclick="show('tr')" id="nav-tr">T&uuml;rk&ccedil;e</a> |
-        <a href="#" onclick="show('id')" id="nav-id">Indonesia</a> |
-        <a href="#" onclick="show('ur')" id="nav-ur">اردو</a> |
-        <a href="#" onclick="show('bn')" id="nav-bn">বাংলা</a>
-    </nav>
 
-    <!-- ENGLISH -->
-    <div id="en" class="section active">
-        <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: April 7, 2026</p>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="./" class="logo">
+        <svg width="22" height="18.9" viewBox="0 0 100 86" style="display:block;flex-shrink:0" aria-hidden="true">
+          <rect x="10" y="16" width="80" height="64" rx="3" fill="#0A0A0A"/>
+          <rect x="10" y="42" width="80" height="10" fill="#D4A843"/>
+          <rect x="4" y="8" width="92" height="10" rx="2" fill="#0A0A0A"/>
+        </svg>
+        <span class="logo-name">nida</span>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to nida
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow">Legal</div>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-subtitle">nida collects no personal data, has no tracking, and works entirely offline.</p>
+    </div>
+  </div>
+
+  <!-- Language tabs -->
+  <div class="lang-bar">
+    <div class="lang-bar-inner">
+      <button class="lang-btn active" onclick="show('en')" id="tab-en">English</button>
+      <button class="lang-btn" onclick="show('fr')" id="tab-fr">Français</button>
+      <button class="lang-btn" onclick="show('ar')" id="tab-ar" style="font-family:'Noto Naskh Arabic',serif;font-size:13px">العربية</button>
+      <button class="lang-btn" onclick="show('tr')" id="tab-tr">Türkçe</button>
+      <button class="lang-btn" onclick="show('id')" id="tab-id">Indonesia</button>
+      <button class="lang-btn" onclick="show('ur')" id="tab-ur" style="font-family:'Noto Naskh Arabic',serif;font-size:13px">اردو</button>
+      <button class="lang-btn" onclick="show('bn')" id="tab-bn">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-wrap">
+    <div class="content-inner">
+
+      <!-- ENGLISH -->
+      <div id="en" class="section active">
+        <span class="updated">Last updated: April 7, 2026</span>
 
         <p><strong>nida</strong> is an Islamic prayer times application developed by Mehdi Mehni ("we", "us", "our"). We are committed to protecting your privacy. This policy explains how nida handles your data.</p>
 
@@ -53,12 +361,12 @@
         <h2>2. Device Permissions</h2>
         <p>nida may request the following device permissions, all processed locally on your device:</p>
         <table>
-            <tr><th>Permission</th><th>Purpose</th><th>Data sent to servers</th></tr>
-            <tr><td>Location</td><td>Calculate accurate prayer times and Qibla direction based on your position</td><td>None — processed on-device only</td></tr>
-            <tr><td>Notifications</td><td>Send local reminders at prayer times</td><td>None — scheduled locally</td></tr>
-            <tr><td>Exact Alarms</td><td>Ensure prayer notifications fire at the precise scheduled time</td><td>None</td></tr>
-            <tr><td>Boot Completed</td><td>Reschedule prayer notifications after a device restart</td><td>None</td></tr>
-            <tr><td>Vibration</td><td>Haptic feedback when the Qibla compass aligns with the direction of Makkah</td><td>None</td></tr>
+          <tr><th>Permission</th><th>Purpose</th><th>Data sent to servers</th></tr>
+          <tr><td>Location</td><td>Calculate accurate prayer times and Qibla direction based on your position</td><td>None — processed on-device only</td></tr>
+          <tr><td>Notifications</td><td>Send local reminders at prayer times</td><td>None — scheduled locally</td></tr>
+          <tr><td>Exact Alarms</td><td>Ensure prayer notifications fire at the precise scheduled time</td><td>None</td></tr>
+          <tr><td>Boot Completed</td><td>Reschedule prayer notifications after a device restart</td><td>None</td></tr>
+          <tr><td>Vibration</td><td>Haptic feedback when the Qibla compass aligns with the direction of Makkah</td><td>None</td></tr>
         </table>
 
         <h2>3. Local Storage</h2>
@@ -76,10 +384,10 @@
         <h2>7. Your Rights</h2>
         <p>Under applicable privacy laws (including GDPR, Quebec Law 25, and CCPA), you have rights regarding your personal data. Since nida does not collect any personal data, these rights are inherently respected:</p>
         <ul>
-            <li><strong>Right to access:</strong> No personal data is stored on our servers.</li>
-            <li><strong>Right to deletion:</strong> Uninstalling the app removes all locally stored preferences.</li>
-            <li><strong>Right to portability:</strong> No data exists to transfer.</li>
-            <li><strong>Right to object:</strong> No data processing occurs.</li>
+          <li><strong>Right to access:</strong> No personal data is stored on our servers.</li>
+          <li><strong>Right to deletion:</strong> Uninstalling the app removes all locally stored preferences.</li>
+          <li><strong>Right to portability:</strong> No data exists to transfer.</li>
+          <li><strong>Right to object:</strong> No data processing occurs.</li>
         </ul>
 
         <h2>8. Data Security</h2>
@@ -96,74 +404,72 @@
 
         <h2>12. Contact</h2>
         <p>If you have questions or concerns about this privacy policy, contact us at:<br>
-        <strong>Email:</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
+        <strong>Email:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
         <strong>Location:</strong> Montreal, Quebec, Canada</p>
-    </div>
+      </div>
 
-    <!-- FRENCH -->
-    <div id="fr" class="section" lang="fr">
-        <h1>Politique de confidentialit&eacute;</h1>
-        <p class="updated">Derni&egrave;re mise &agrave; jour : 7 avril 2026</p>
+      <!-- FRENCH -->
+      <div id="fr" class="section" lang="fr">
+        <span class="updated">Dernière mise à jour : 7 avril 2026</span>
 
-        <p><strong>nida</strong> est une application d'horaires de pri&egrave;re islamique d&eacute;velopp&eacute;e par Mehdi Mehni (&laquo; nous &raquo;, &laquo; notre &raquo;). Nous nous engageons &agrave; prot&eacute;ger votre vie priv&eacute;e. Cette politique explique comment nida traite vos donn&eacute;es.</p>
+        <p><strong>nida</strong> est une application d'horaires de prière islamique développée par Mehdi Mehni (« nous », « notre »). Nous nous engageons à protéger votre vie privée. Cette politique explique comment nida traite vos données.</p>
 
-        <h2>1. Donn&eacute;es collect&eacute;es</h2>
-        <p><strong>nida ne collecte, ne stocke, ne transmet et ne partage aucune donn&eacute;e personnelle.</strong> Il n'y a aucun compte utilisateur, aucune analyse, aucune publicit&eacute;, aucun SDK de suivi et aucun traitement de donn&eacute;es c&ocirc;t&eacute; serveur.</p>
+        <h2>1. Données collectées</h2>
+        <p><strong>nida ne collecte, ne stocke, ne transmet et ne partage aucune donnée personnelle.</strong> Il n'y a aucun compte utilisateur, aucune analyse, aucune publicité, aucun SDK de suivi et aucun traitement de données côté serveur.</p>
 
         <h2>2. Permissions de l'appareil</h2>
-        <p>nida peut demander les permissions suivantes, toutes trait&eacute;es localement sur votre appareil :</p>
+        <p>nida peut demander les permissions suivantes, toutes traitées localement sur votre appareil :</p>
         <table>
-            <tr><th>Permission</th><th>Objectif</th><th>Donn&eacute;es envoy&eacute;es</th></tr>
-            <tr><td>Localisation</td><td>Calculer les horaires de pri&egrave;re et la direction de la Qibla selon votre position</td><td>Aucune — traitement local uniquement</td></tr>
-            <tr><td>Notifications</td><td>Envoyer des rappels locaux aux heures de pri&egrave;re</td><td>Aucune — planifi&eacute;es localement</td></tr>
-            <tr><td>Alarmes exactes</td><td>Garantir que les notifications se d&eacute;clenchent &agrave; l'heure pr&eacute;cise</td><td>Aucune</td></tr>
-            <tr><td>D&eacute;marrage</td><td>Reprogrammer les notifications apr&egrave;s un red&eacute;marrage de l'appareil</td><td>Aucune</td></tr>
-            <tr><td>Vibration</td><td>Retour haptique lorsque la boussole Qibla s'aligne avec La Mecque</td><td>Aucune</td></tr>
+          <tr><th>Permission</th><th>Objectif</th><th>Données envoyées</th></tr>
+          <tr><td>Localisation</td><td>Calculer les horaires de prière et la direction de la Qibla selon votre position</td><td>Aucune — traitement local uniquement</td></tr>
+          <tr><td>Notifications</td><td>Envoyer des rappels locaux aux heures de prière</td><td>Aucune — planifiées localement</td></tr>
+          <tr><td>Alarmes exactes</td><td>Garantir que les notifications se déclenchent à l'heure précise</td><td>Aucune</td></tr>
+          <tr><td>Démarrage</td><td>Reprogrammer les notifications après un redémarrage de l'appareil</td><td>Aucune</td></tr>
+          <tr><td>Vibration</td><td>Retour haptique lorsque la boussole Qibla s'aligne avec La Mecque</td><td>Aucune</td></tr>
         </table>
 
         <h2>3. Stockage local</h2>
-        <p>nida stocke vos pr&eacute;f&eacute;rences (ville, m&eacute;thode de calcul, langue, param&egrave;tres de notification) localement sur votre appareil. Ces donn&eacute;es ne quittent jamais votre appareil et sont supprim&eacute;es lorsque vous d&eacute;sinstallez l'application.</p>
+        <p>nida stocke vos préférences (ville, méthode de calcul, langue, paramètres de notification) localement sur votre appareil. Ces données ne quittent jamais votre appareil et sont supprimées lorsque vous désinstallez l'application.</p>
 
         <h2>4. Services tiers</h2>
-        <p>nida n'int&egrave;gre aucun service, SDK ou biblioth&egrave;que tiers qui collecte des donn&eacute;es. L'application fonctionne enti&egrave;rement hors ligne.</p>
+        <p>nida n'intègre aucun service, SDK ou bibliothèque tiers qui collecte des données. L'application fonctionne entièrement hors ligne.</p>
 
-        <h2>5. Partage de donn&eacute;es</h2>
-        <p>Nous ne partageons aucune donn&eacute;e avec des tiers, car nous n'en collectons aucune.</p>
+        <h2>5. Partage de données</h2>
+        <p>Nous ne partageons aucune donnée avec des tiers, car nous n'en collectons aucune.</p>
 
-        <h2>6. Vie priv&eacute;e des enfants</h2>
-        <p>nida ne collecte aucune donn&eacute;e d'aucun utilisateur, y compris les enfants. L'application est s&ucirc;re pour tous les &acirc;ges.</p>
+        <h2>6. Vie privée des enfants</h2>
+        <p>nida ne collecte aucune donnée d'aucun utilisateur, y compris les enfants. L'application est sûre pour tous les âges.</p>
 
         <h2>7. Vos droits</h2>
-        <p>En vertu des lois applicables (RGPD, Loi 25 du Qu&eacute;bec, CCPA), vous disposez de droits concernant vos donn&eacute;es personnelles. Puisque nida ne collecte aucune donn&eacute;e, ces droits sont intrins&egrave;quement respect&eacute;s :</p>
+        <p>En vertu des lois applicables (RGPD, Loi 25 du Québec, CCPA), vous disposez de droits concernant vos données personnelles. Puisque nida ne collecte aucune donnée, ces droits sont intrinsèquement respectés :</p>
         <ul>
-            <li><strong>Droit d'acc&egrave;s :</strong> Aucune donn&eacute;e personnelle n'est stock&eacute;e sur nos serveurs.</li>
-            <li><strong>Droit de suppression :</strong> D&eacute;sinstaller l'application supprime toutes les pr&eacute;f&eacute;rences locales.</li>
-            <li><strong>Droit &agrave; la portabilit&eacute; :</strong> Aucune donn&eacute;e n'existe &agrave; transf&eacute;rer.</li>
-            <li><strong>Droit d'opposition :</strong> Aucun traitement de donn&eacute;es n'est effectu&eacute;.</li>
+          <li><strong>Droit d'accès :</strong> Aucune donnée personnelle n'est stockée sur nos serveurs.</li>
+          <li><strong>Droit de suppression :</strong> Désinstaller l'application supprime toutes les préférences locales.</li>
+          <li><strong>Droit à la portabilité :</strong> Aucune donnée n'existe à transférer.</li>
+          <li><strong>Droit d'opposition :</strong> Aucun traitement de données n'est effectué.</li>
         </ul>
 
-        <h2>8. S&eacute;curit&eacute; des donn&eacute;es</h2>
-        <p>Aucune donn&eacute;e n'&eacute;tant transmise ou stock&eacute;e sur des serveurs, il n'y a aucun risque de violation de donn&eacute;es de notre c&ocirc;t&eacute;. Vos pr&eacute;f&eacute;rences sont prot&eacute;g&eacute;es par la s&eacute;curit&eacute; int&eacute;gr&eacute;e de votre appareil.</p>
+        <h2>8. Sécurité des données</h2>
+        <p>Aucune donnée n'étant transmise ou stockée sur des serveurs, il n'y a aucun risque de violation de données de notre côté. Vos préférences sont protégées par la sécurité intégrée de votre appareil.</p>
 
-        <h2>9. Conservation des donn&eacute;es</h2>
-        <p>Toutes les donn&eacute;es sont stock&eacute;es localement. Nous ne conservons aucune donn&eacute;e sur un serveur. Les donn&eacute;es locales sont supprim&eacute;es lorsque vous d&eacute;sinstallez l'application.</p>
+        <h2>9. Conservation des données</h2>
+        <p>Toutes les données sont stockées localement. Nous ne conservons aucune donnée sur un serveur. Les données locales sont supprimées lorsque vous désinstallez l'application.</p>
 
         <h2>10. Utilisateurs internationaux</h2>
-        <p>nida est disponible dans le monde entier. Aucune donn&eacute;e n'&eacute;tant collect&eacute;e ou transf&eacute;r&eacute;e, il n'y a aucun enjeu de transfert transfrontalier.</p>
+        <p>nida est disponible dans le monde entier. Aucune donnée n'étant collectée ou transférée, il n'y a aucun enjeu de transfert transfrontalier.</p>
 
         <h2>11. Modifications de cette politique</h2>
-        <p>En cas de modification, cette page sera mise &agrave; jour avec la nouvelle date. Nous vous encourageons &agrave; la consulter p&eacute;riodiquement.</p>
+        <p>En cas de modification, cette page sera mise à jour avec la nouvelle date. Nous vous encourageons à la consulter périodiquement.</p>
 
         <h2>12. Contact</h2>
         <p>Pour toute question concernant cette politique :<br>
-        <strong>Courriel :</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
-        <strong>Lieu :</strong> Montr&eacute;al, Qu&eacute;bec, Canada</p>
-    </div>
+        <strong>Courriel :</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
+        <strong>Lieu :</strong> Montréal, Québec, Canada</p>
+      </div>
 
-    <!-- ARABIC -->
-    <div id="ar" class="section" lang="ar" dir="rtl">
-        <h1>سياسة الخصوصية</h1>
-        <p class="updated">آخر تحديث: 7 أبريل 2026</p>
+      <!-- ARABIC -->
+      <div id="ar" class="section" lang="ar" dir="rtl" style="font-family:'Noto Naskh Arabic',serif">
+        <span class="updated" style="font-family:'Noto Naskh Arabic',serif">آخر تحديث: 7 أبريل 2026</span>
 
         <p><strong>nida</strong> هو تطبيق مواقيت الصلاة الإسلامية من تطوير مهدي مهني ("نحن"). نحن ملتزمون بحماية خصوصيتك. توضح هذه السياسة كيف يتعامل تطبيق nida مع بياناتك.</p>
 
@@ -173,12 +479,12 @@
         <h2>2. أذونات الجهاز</h2>
         <p>قد يطلب تطبيق nida الأذونات التالية، وجميعها تُعالج محليًا على جهازك:</p>
         <table>
-            <tr><th>الإذن</th><th>الغرض</th><th>البيانات المرسلة</th></tr>
-            <tr><td>الموقع</td><td>حساب مواقيت الصلاة واتجاه القبلة بناءً على موقعك</td><td>لا شيء — المعالجة محلية فقط</td></tr>
-            <tr><td>الإشعارات</td><td>إرسال تذكيرات محلية بأوقات الصلاة</td><td>لا شيء — مجدولة محليًا</td></tr>
-            <tr><td>المنبهات الدقيقة</td><td>ضمان إطلاق الإشعارات في الوقت المحدد بدقة</td><td>لا شيء</td></tr>
-            <tr><td>بدء التشغيل</td><td>إعادة جدولة الإشعارات بعد إعادة تشغيل الجهاز</td><td>لا شيء</td></tr>
-            <tr><td>الاهتزاز</td><td>استجابة لمسية عند محاذاة بوصلة القبلة مع اتجاه مكة المكرمة</td><td>لا شيء</td></tr>
+          <tr><th>الإذن</th><th>الغرض</th><th>البيانات المرسلة</th></tr>
+          <tr><td>الموقع</td><td>حساب مواقيت الصلاة واتجاه القبلة بناءً على موقعك</td><td>لا شيء — المعالجة محلية فقط</td></tr>
+          <tr><td>الإشعارات</td><td>إرسال تذكيرات محلية بأوقات الصلاة</td><td>لا شيء — مجدولة محليًا</td></tr>
+          <tr><td>المنبهات الدقيقة</td><td>ضمان إطلاق الإشعارات في الوقت المحدد بدقة</td><td>لا شيء</td></tr>
+          <tr><td>بدء التشغيل</td><td>إعادة جدولة الإشعارات بعد إعادة تشغيل الجهاز</td><td>لا شيء</td></tr>
+          <tr><td>الاهتزاز</td><td>استجابة لمسية عند محاذاة بوصلة القبلة مع اتجاه مكة المكرمة</td><td>لا شيء</td></tr>
         </table>
 
         <h2>3. التخزين المحلي</h2>
@@ -196,10 +502,10 @@
         <h2>7. حقوقك</h2>
         <p>بموجب قوانين الخصوصية المعمول بها (بما في ذلك اللائحة العامة لحماية البيانات GDPR)، لديك حقوق تتعلق ببياناتك الشخصية. بما أن تطبيق nida لا يجمع أي بيانات، فإن هذه الحقوق محترمة بطبيعتها:</p>
         <ul>
-            <li><strong>حق الوصول:</strong> لا توجد بيانات شخصية مخزنة على خوادمنا.</li>
-            <li><strong>حق الحذف:</strong> إلغاء تثبيت التطبيق يزيل جميع التفضيلات المحلية.</li>
-            <li><strong>حق النقل:</strong> لا توجد بيانات لنقلها.</li>
-            <li><strong>حق الاعتراض:</strong> لا تتم أي معالجة للبيانات.</li>
+          <li><strong>حق الوصول:</strong> لا توجد بيانات شخصية مخزنة على خوادمنا.</li>
+          <li><strong>حق الحذف:</strong> إلغاء تثبيت التطبيق يزيل جميع التفضيلات المحلية.</li>
+          <li><strong>حق النقل:</strong> لا توجد بيانات لنقلها.</li>
+          <li><strong>حق الاعتراض:</strong> لا تتم أي معالجة للبيانات.</li>
         </ul>
 
         <h2>8. أمن البيانات</h2>
@@ -216,74 +522,72 @@
 
         <h2>12. التواصل</h2>
         <p>لأي أسئلة حول هذه السياسة:<br>
-        <strong>البريد الإلكتروني:</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
+        <strong>البريد الإلكتروني:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
         <strong>الموقع:</strong> مونتريال، كيبك، كندا</p>
-    </div>
+      </div>
 
-    <!-- TURKISH -->
-    <div id="tr" class="section" lang="tr">
-        <h1>Gizlilik Politikas&#x131;</h1>
-        <p class="updated">Son g&uuml;ncelleme: 7 Nisan 2026</p>
+      <!-- TURKISH -->
+      <div id="tr" class="section" lang="tr">
+        <span class="updated">Son güncelleme: 7 Nisan 2026</span>
 
-        <p><strong>nida</strong>, Mehdi Mehni ("biz", "bizim") taraf&#x131;ndan geli&#x15F;tirilmi&#x15F; bir &#x130;slami namaz vakitleri uygulamas&#x131;d&#x131;r. Gizlili&#x11F;inizi korumaya kararl&#x131;y&#x131;z. Bu politika, nida'n&#x131;n verilerinizi nas&#x131;l i&#x15F;ledi&#x11F;ini a&ccedil;&#x131;klar.</p>
+        <p><strong>nida</strong>, Mehdi Mehni ("biz", "bizim") tarafından geliştirilmiş bir İslami namaz vakitleri uygulamasıdır. Gizliliğinizi korumaya kararlıyız. Bu politika, nida'nın verilerinizi nasıl işlediğini açıklar.</p>
 
-        <h2>1. Toplad&#x131;&#x11F;&#x131;m&#x131;z Veriler</h2>
-        <p><strong>nida hi&ccedil;bir ki&#x15F;isel veri toplamaz, depolamaz, iletmez veya payla&#x15F;maz.</strong> Hesap, analitik, reklam, takip SDK's&#x131; veya sunucu tarafl&#x131; veri i&#x15F;leme yoktur.</p>
+        <h2>1. Topladığımız Veriler</h2>
+        <p><strong>nida hiçbir kişisel veri toplamaz, depolamaz, iletmez veya paylaşmaz.</strong> Hesap, analitik, reklam, takip SDK'sı veya sunucu taraflı veri işleme yoktur.</p>
 
-        <h2>2. Cihaz &#x130;zinleri</h2>
-        <p>nida a&#x15F;a&#x11F;&#x131;daki izinleri talep edebilir, hepsi cihaz&#x131;n&#x131;zda yerel olarak i&#x15F;lenir:</p>
+        <h2>2. Cihaz İzinleri</h2>
+        <p>nida aşağıdaki izinleri talep edebilir, hepsi cihazınızda yerel olarak işlenir:</p>
         <table>
-            <tr><th>&#x130;zin</th><th>Ama&ccedil;</th><th>Sunuculara g&ouml;nderilen veri</th></tr>
-            <tr><td>Konum</td><td>Konumunuza g&ouml;re do&#x11F;ru namaz vakitleri ve k&#x131;ble y&ouml;n&uuml; hesaplama</td><td>Yok — yaln&#x131;zca cihazda i&#x15F;lenir</td></tr>
-            <tr><td>Bildirimler</td><td>Namaz vakitlerinde yerel hat&#x131;rlat&#x131;c&#x131;lar g&ouml;nderme</td><td>Yok — yerel olarak planlan&#x131;r</td></tr>
-            <tr><td>Kesin Alarmlar</td><td>Bildirimlerin tam zaman&#x131;nda tetiklenmesini sa&#x11F;lama</td><td>Yok</td></tr>
-            <tr><td>Ba&#x15F;lang&#x131;&ccedil;</td><td>Cihaz yeniden ba&#x15F;lat&#x131;ld&#x131;ktan sonra bildirimleri yeniden planlama</td><td>Yok</td></tr>
-            <tr><td>Titre&#x15F;im</td><td>K&#x131;ble pusulas&#x131; Mekke y&ouml;n&uuml;yle hizaland&#x131;&#x11F;&#x131;nda dokunsal geri bildirim</td><td>Yok</td></tr>
+          <tr><th>İzin</th><th>Amaç</th><th>Sunuculara gönderilen veri</th></tr>
+          <tr><td>Konum</td><td>Konumunuza göre doğru namaz vakitleri ve kıble yönü hesaplama</td><td>Yok — yalnızca cihazda işlenir</td></tr>
+          <tr><td>Bildirimler</td><td>Namaz vakitlerinde yerel hatırlatıcılar gönderme</td><td>Yok — yerel olarak planlanır</td></tr>
+          <tr><td>Kesin Alarmlar</td><td>Bildirimlerin tam zamanında tetiklenmesini sağlama</td><td>Yok</td></tr>
+          <tr><td>Başlangıç</td><td>Cihaz yeniden başlatıldıktan sonra bildirimleri yeniden planlama</td><td>Yok</td></tr>
+          <tr><td>Titreşim</td><td>Kıble pusulası Mekke yönüyle hizalandığında dokunsal geri bildirim</td><td>Yok</td></tr>
         </table>
 
         <h2>3. Yerel Depolama</h2>
-        <p>nida, tercihlerinizi (se&ccedil;ilen &#x15F;ehir, hesap y&ouml;ntemi, dil, bildirim ayarlar&#x131;) cihaz&#x131;n&#x131;zda yerel olarak saklar. Bu veriler asla cihaz&#x131;n&#x131;z&#x131; terk etmez ve uygulama kald&#x131;r&#x131;ld&#x131;&#x11F;&#x131;nda silinir.</p>
+        <p>nida, tercihlerinizi (seçilen şehir, hesap yöntemi, dil, bildirim ayarları) cihazınızda yerel olarak saklar. Bu veriler asla cihazınızı terk etmez ve uygulama kaldırıldığında silinir.</p>
 
-        <h2>4. &Uuml;&ccedil;&uuml;nc&uuml; Taraf Hizmetler</h2>
-        <p>nida, kullan&#x131;c&#x131; verisi toplayan hi&ccedil;bir &uuml;&ccedil;&uuml;nc&uuml; taraf hizmet, SDK veya k&uuml;t&uuml;phane entegre etmez. Uygulama tamamen &ccedil;evrimi&ccedil;i &ccedil;al&#x131;&#x15F;&#x131;r.</p>
+        <h2>4. Üçüncü Taraf Hizmetler</h2>
+        <p>nida, kullanıcı verisi toplayan hiçbir üçüncü taraf hizmet, SDK veya kütüphane entegre etmez. Uygulama tamamen çevrimiçi çalışır.</p>
 
-        <h2>5. Veri Payla&#x15F;&#x131;m&#x131;</h2>
-        <p>Hi&ccedil;bir veri toplamad&#x131;&#x11F;&#x131;m&#x131;z i&ccedil;in &uuml;&ccedil;&uuml;nc&uuml; taraflarla veri payla&#x15F;m&#x131;yoruz.</p>
+        <h2>5. Veri Paylaşımı</h2>
+        <p>Hiçbir veri toplamadığımız için üçüncü taraflarla veri paylaşmıyoruz.</p>
 
-        <h2>6. &Ccedil;ocuklar&#x131;n Gizlili&#x11F;i</h2>
-        <p>nida, 13 ya&#x15F; alt&#x131; &ccedil;ocuklar dahil hi&ccedil;bir kullan&#x131;c&#x131;dan veri toplamaz. Uygulama her ya&#x15F; i&ccedil;in g&uuml;venlidir.</p>
+        <h2>6. Çocukların Gizliliği</h2>
+        <p>nida, 13 yaş altı çocuklar dahil hiçbir kullanıcıdan veri toplamaz. Uygulama her yaş için güvenlidir.</p>
 
-        <h2>7. Haklar&#x131;n&#x131;z</h2>
-        <p>GDPR ve di&#x11F;er ge&ccedil;erli gizlilik yasalar&#x131; kapsam&#x131;nda ki&#x15F;isel verileriniz &uuml;zerinde haklar&#x131;n&#x131;z vard&#x131;r. nida hi&ccedil;bir veri toplamad&#x131;&#x11F;&#x131;ndan bu haklar do&#x11F;al olarak korunmaktad&#x131;r:</p>
+        <h2>7. Haklarınız</h2>
+        <p>GDPR ve diğer geçerli gizlilik yasaları kapsamında kişisel verileriniz üzerinde haklarınız vardır. nida hiçbir veri toplamadığından bu haklar doğal olarak korunmaktadır:</p>
         <ul>
-            <li><strong>Eri&#x15F;im hakk&#x131;:</strong> Sunucular&#x131;m&#x131;zda ki&#x15F;isel veri depolanmamaktad&#x131;r.</li>
-            <li><strong>Silme hakk&#x131;:</strong> Uygulama kald&#x131;r&#x131;ld&#x131;&#x11F;&#x131;nda t&uuml;m yerel tercihler silinir.</li>
-            <li><strong>Ta&#x15F;&#x131;nabilirlik hakk&#x131;:</strong> Aktar&#x131;lacak veri yoktur.</li>
-            <li><strong>&#x130;tiraz hakk&#x131;:</strong> Hi&ccedil;bir veri i&#x15F;lemi ger&ccedil;ekle&#x15F;mez.</li>
+          <li><strong>Erişim hakkı:</strong> Sunucularımızda kişisel veri depolanmamaktadır.</li>
+          <li><strong>Silme hakkı:</strong> Uygulama kaldırıldığında tüm yerel tercihler silinir.</li>
+          <li><strong>Taşınabilirlik hakkı:</strong> Aktarılacak veri yoktur.</li>
+          <li><strong>İtiraz hakkı:</strong> Hiçbir veri işlemi gerçekleşmez.</li>
         </ul>
 
-        <h2>8. Veri G&uuml;venli&#x11F;i</h2>
-        <p>Sunucularda veri iletilmedi&#x11F;i veya depolanmad&#x131;&#x11F;&#x131; i&ccedil;in bizim taraf&#x131;m&#x131;zdan veri ihlali riski bulunmamaktad&#x131;r. Tercihleriniz cihaz&#x131;n&#x131;z&#x131;n yerle&#x15F;ik g&uuml;venli&#x11F;i taraf&#x131;ndan korunmaktad&#x131;r.</p>
+        <h2>8. Veri Güvenliği</h2>
+        <p>Sunucularda veri iletilmediği veya depolanmadığı için bizim tarafımızdan veri ihlali riski bulunmamaktadır. Tercihleriniz cihazınızın yerleşik güvenliği tarafından korunmaktadır.</p>
 
         <h2>9. Veri Saklama</h2>
-        <p>T&uuml;m veriler cihaz&#x131;n&#x131;zda yerel olarak saklan&#x131;r. Hi&ccedil;bir sunucuda veri tutmuyoruz. Yerel veriler uygulama kald&#x131;r&#x131;ld&#x131;&#x11F;&#x131;nda silinir.</p>
+        <p>Tüm veriler cihazınızda yerel olarak saklanır. Hiçbir sunucuda veri tutmuyoruz. Yerel veriler uygulama kaldırıldığında silinir.</p>
 
-        <h2>10. Uluslararas&#x131; Kullan&#x131;c&#x131;lar</h2>
-        <p>nida d&uuml;nya genelinde kullan&#x131;labilir. Veri toplanmad&#x131;&#x11F;&#x131; veya aktar&#x131;lmad&#x131;&#x11F;&#x131; i&ccedil;in s&#x131;n&#x131;r &ouml;tesi veri transferi endi&#x15F;esi yoktur.</p>
+        <h2>10. Uluslararası Kullanıcılar</h2>
+        <p>nida dünya genelinde kullanılabilir. Veri toplanmadığı veya aktarılmadığı için sınır ötesi veri transferi endişesi yoktur.</p>
 
-        <h2>11. Bu Politikadaki De&#x11F;i&#x15F;iklikler</h2>
-        <p>Bu politikay&#x131; de&#x11F;i&#x15F;tirsek, yeni ge&ccedil;erlilik tarihiyle bu sayfay&#x131; g&uuml;ncelleyece&#x11F;iz. Bu sayfay&#x131; periyodik olarak incelemenizi &ouml;neririz.</p>
+        <h2>11. Bu Politikadaki Değişiklikler</h2>
+        <p>Bu politikayı değiştirsek, yeni geçerlilik tarihiyle bu sayfayı güncelleyeceğiz. Bu sayfayı periyodik olarak incelemenizi öneririz.</p>
 
-        <h2>12. &#x130;leti&#x15F;im</h2>
+        <h2>12. İletişim</h2>
         <p>Bu gizlilik politikasıyla ilgili sorularınız için:<br>
-        <strong>E-posta:</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
+        <strong>E-posta:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
         <strong>Konum:</strong> Montreal, Quebec, Kanada</p>
-    </div>
+      </div>
 
-    <!-- INDONESIAN -->
-    <div id="id" class="section" lang="id">
-        <h1>Kebijakan Privasi</h1>
-        <p class="updated">Terakhir diperbarui: 7 April 2026</p>
+      <!-- INDONESIAN -->
+      <div id="id" class="section" lang="id">
+        <span class="updated">Terakhir diperbarui: 7 April 2026</span>
 
         <p><strong>nida</strong> adalah aplikasi waktu shalat Islam yang dikembangkan oleh Mehdi Mehni ("kami"). Kami berkomitmen untuk melindungi privasi Anda. Kebijakan ini menjelaskan bagaimana nida menangani data Anda.</p>
 
@@ -293,12 +597,12 @@
         <h2>2. Izin Perangkat</h2>
         <p>nida mungkin meminta izin perangkat berikut, semuanya diproses secara lokal di perangkat Anda:</p>
         <table>
-            <tr><th>Izin</th><th>Tujuan</th><th>Data yang dikirim ke server</th></tr>
-            <tr><td>Lokasi</td><td>Menghitung waktu shalat yang akurat dan arah kiblat berdasarkan posisi Anda</td><td>Tidak ada — hanya diproses di perangkat</td></tr>
-            <tr><td>Notifikasi</td><td>Mengirim pengingat lokal pada waktu shalat</td><td>Tidak ada — dijadwalkan secara lokal</td></tr>
-            <tr><td>Alarm Tepat</td><td>Memastikan notifikasi terpicu tepat pada waktu yang dijadwalkan</td><td>Tidak ada</td></tr>
-            <tr><td>Mulai Perangkat</td><td>Menjadwalkan ulang notifikasi setelah perangkat restart</td><td>Tidak ada</td></tr>
-            <tr><td>Getaran</td><td>Umpan balik haptic saat kompas kiblat sejajar dengan arah Mekah</td><td>Tidak ada</td></tr>
+          <tr><th>Izin</th><th>Tujuan</th><th>Data yang dikirim ke server</th></tr>
+          <tr><td>Lokasi</td><td>Menghitung waktu shalat yang akurat dan arah kiblat berdasarkan posisi Anda</td><td>Tidak ada — hanya diproses di perangkat</td></tr>
+          <tr><td>Notifikasi</td><td>Mengirim pengingat lokal pada waktu shalat</td><td>Tidak ada — dijadwalkan secara lokal</td></tr>
+          <tr><td>Alarm Tepat</td><td>Memastikan notifikasi terpicu tepat pada waktu yang dijadwalkan</td><td>Tidak ada</td></tr>
+          <tr><td>Mulai Perangkat</td><td>Menjadwalkan ulang notifikasi setelah perangkat restart</td><td>Tidak ada</td></tr>
+          <tr><td>Getaran</td><td>Umpan balik haptic saat kompas kiblat sejajar dengan arah Mekah</td><td>Tidak ada</td></tr>
         </table>
 
         <h2>3. Penyimpanan Lokal</h2>
@@ -316,10 +620,10 @@
         <h2>7. Hak Anda</h2>
         <p>Berdasarkan undang-undang privasi yang berlaku (termasuk GDPR), Anda memiliki hak atas data pribadi Anda. Karena nida tidak mengumpulkan data apa pun, hak-hak ini secara inheren dihormati:</p>
         <ul>
-            <li><strong>Hak akses:</strong> Tidak ada data pribadi yang disimpan di server kami.</li>
-            <li><strong>Hak penghapusan:</strong> Menghapus instalasi aplikasi akan menghapus semua preferensi lokal.</li>
-            <li><strong>Hak portabilitas:</strong> Tidak ada data untuk ditransfer.</li>
-            <li><strong>Hak keberatan:</strong> Tidak ada pemrosesan data yang terjadi.</li>
+          <li><strong>Hak akses:</strong> Tidak ada data pribadi yang disimpan di server kami.</li>
+          <li><strong>Hak penghapusan:</strong> Menghapus instalasi aplikasi akan menghapus semua preferensi lokal.</li>
+          <li><strong>Hak portabilitas:</strong> Tidak ada data untuk ditransfer.</li>
+          <li><strong>Hak keberatan:</strong> Tidak ada pemrosesan data yang terjadi.</li>
         </ul>
 
         <h2>8. Keamanan Data</h2>
@@ -336,14 +640,13 @@
 
         <h2>12. Kontak</h2>
         <p>Jika Anda memiliki pertanyaan tentang kebijakan privasi ini:<br>
-        <strong>Email:</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
+        <strong>Email:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
         <strong>Lokasi:</strong> Montreal, Quebec, Kanada</p>
-    </div>
+      </div>
 
-    <!-- URDU -->
-    <div id="ur" class="section" lang="ur" dir="rtl">
-        <h1>رازداری کی پالیسی</h1>
-        <p class="updated">آخری تازہ کاری: 7 اپریل 2026</p>
+      <!-- URDU -->
+      <div id="ur" class="section" lang="ur" dir="rtl" style="font-family:'Noto Naskh Arabic',serif">
+        <span class="updated" style="font-family:'Noto Naskh Arabic',serif">آخری تازہ کاری: 7 اپریل 2026</span>
 
         <p><strong>nida</strong> مہدی مہنی ("ہم") کی طرف سے تیار کردہ ایک اسلامی نماز اوقات ایپلیکیشن ہے۔ ہم آپ کی رازداری کے تحفظ کے لیے پرعزم ہیں۔ یہ پالیسی وضاحت کرتی ہے کہ nida آپ کا ڈیٹا کیسے سنبھالتا ہے۔</p>
 
@@ -353,12 +656,12 @@
         <h2>2. ڈیوائس اجازتیں</h2>
         <p>nida درج ذیل ڈیوائس اجازتیں مانگ سکتا ہے، جو سب آپ کے ڈیوائس پر مقامی طور پر پروسیس ہوتی ہیں:</p>
         <table>
-            <tr><th>اجازت</th><th>مقصد</th><th>سرورز کو بھیجا گیا ڈیٹا</th></tr>
-            <tr><td>مقام</td><td>آپ کی پوزیشن کی بنیاد پر درست نماز اوقات اور سمتِ قبلہ حساب کرنا</td><td>کچھ نہیں — صرف ڈیوائس پر پروسیس</td></tr>
-            <tr><td>اطلاعات</td><td>نماز اوقات پر مقامی یاددہانیاں بھیجنا</td><td>کچھ نہیں — مقامی طور پر شیڈول</td></tr>
-            <tr><td>درست الارم</td><td>اطلاعات کا عین مقررہ وقت پر فائر ہونا یقینی بنانا</td><td>کچھ نہیں</td></tr>
-            <tr><td>بوٹ کمپلیٹ</td><td>ڈیوائس ری اسٹارٹ کے بعد نماز اطلاعات دوبارہ شیڈول کرنا</td><td>کچھ نہیں</td></tr>
-            <tr><td>وائبریشن</td><td>قبلہ کمپاس کے مکہ کی سمت سیدھا ہونے پر ہیپٹک فیڈبیک</td><td>کچھ نہیں</td></tr>
+          <tr><th>اجازت</th><th>مقصد</th><th>سرورز کو بھیجا گیا ڈیٹا</th></tr>
+          <tr><td>مقام</td><td>آپ کی پوزیشن کی بنیاد پر درست نماز اوقات اور سمتِ قبلہ حساب کرنا</td><td>کچھ نہیں — صرف ڈیوائس پر پروسیس</td></tr>
+          <tr><td>اطلاعات</td><td>نماز اوقات پر مقامی یاددہانیاں بھیجنا</td><td>کچھ نہیں — مقامی طور پر شیڈول</td></tr>
+          <tr><td>درست الارم</td><td>اطلاعات کا عین مقررہ وقت پر فائر ہونا یقینی بنانا</td><td>کچھ نہیں</td></tr>
+          <tr><td>بوٹ کمپلیٹ</td><td>ڈیوائس ری اسٹارٹ کے بعد نماز اطلاعات دوبارہ شیڈول کرنا</td><td>کچھ نہیں</td></tr>
+          <tr><td>وائبریشن</td><td>قبلہ کمپاس کے مکہ کی سمت سیدھا ہونے پر ہیپٹک فیڈبیک</td><td>کچھ نہیں</td></tr>
         </table>
 
         <h2>3. مقامی ذخیرہ</h2>
@@ -376,10 +679,10 @@
         <h2>7. آپ کے حقوق</h2>
         <p>قابلِ اطلاق رازداری قوانین (بشمول GDPR) کے تحت آپ کو اپنے ذاتی ڈیٹا کے بارے میں حقوق حاصل ہیں۔ چونکہ nida کوئی ڈیٹا جمع نہیں کرتا، یہ حقوق فطری طور پر محفوظ ہیں:</p>
         <ul>
-            <li><strong>رسائی کا حق:</strong> ہمارے سرورز پر کوئی ذاتی ڈیٹا محفوظ نہیں ہے۔</li>
-            <li><strong>حذف کا حق:</strong> ایپ ان انسٹال کرنے سے تمام مقامی ترجیحات مٹ جاتی ہیں۔</li>
-            <li><strong>پورٹیبلٹی کا حق:</strong> منتقل کرنے کے لیے کوئی ڈیٹا نہیں ہے۔</li>
-            <li><strong>اعتراض کا حق:</strong> کوئی ڈیٹا پروسیسنگ نہیں ہوتی۔</li>
+          <li><strong>رسائی کا حق:</strong> ہمارے سرورز پر کوئی ذاتی ڈیٹا محفوظ نہیں ہے۔</li>
+          <li><strong>حذف کا حق:</strong> ایپ ان انسٹال کرنے سے تمام مقامی ترجیحات مٹ جاتی ہیں۔</li>
+          <li><strong>پورٹیبلٹی کا حق:</strong> منتقل کرنے کے لیے کوئی ڈیٹا نہیں ہے۔</li>
+          <li><strong>اعتراض کا حق:</strong> کوئی ڈیٹا پروسیسنگ نہیں ہوتی۔</li>
         </ul>
 
         <h2>8. ڈیٹا سیکیورٹی</h2>
@@ -396,14 +699,13 @@
 
         <h2>12. رابطہ</h2>
         <p>اس پالیسی کے بارے میں سوالات کے لیے:<br>
-        <strong>ای میل:</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
+        <strong>ای میل:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
         <strong>مقام:</strong> مونٹریال، کیوبیک، کینیڈا</p>
-    </div>
+      </div>
 
-    <!-- BENGALI -->
-    <div id="bn" class="section" lang="bn">
-        <h1>গোপনীয়তা নীতি</h1>
-        <p class="updated">সর্বশেষ আপডেট: ৭ এপ্রিল ২০২৬</p>
+      <!-- BENGALI -->
+      <div id="bn" class="section" lang="bn">
+        <span class="updated">সর্বশেষ আপডেট: ৭ এপ্রিল ২০২৬</span>
 
         <p><strong>nida</strong> মেহদি মেহনি ("আমরা", "আমাদের") কর্তৃক তৈরি একটি ইসলামিক নামাজের সময় অ্যাপ্লিকেশন। আমরা আপনার গোপনীয়তা রক্ষায় প্রতিশ্রুতিবদ্ধ। এই নীতি ব্যাখ্যা করে কিভাবে nida আপনার ডেটা পরিচালনা করে।</p>
 
@@ -413,12 +715,12 @@
         <h2>২. ডিভাইস অনুমতি</h2>
         <p>nida নিম্নলিখিত ডিভাইস অনুমতি চাইতে পারে, সবকিছু আপনার ডিভাইসে স্থানীয়ভাবে প্রক্রিয়া করা হয়:</p>
         <table>
-            <tr><th>অনুমতি</th><th>উদ্দেশ্য</th><th>সার্ভারে পাঠানো ডেটা</th></tr>
-            <tr><td>অবস্থান</td><td>আপনার অবস্থানের উপর ভিত্তি করে সঠিক নামাজের সময় ও কিবলার দিক গণনা</td><td>কিছু নয় — শুধুমাত্র ডিভাইসে প্রক্রিয়া</td></tr>
-            <tr><td>বিজ্ঞপ্তি</td><td>নামাজের সময়ে স্থানীয় স্মরণ পাঠানো</td><td>কিছু নয় — স্থানীয়ভাবে নির্ধারিত</td></tr>
-            <tr><td>নির্ভুল অ্যালার্ম</td><td>নামাজের বিজ্ঞপ্তি নির্ধারিত সময়ে ট্রিগার নিশ্চিত করা</td><td>কিছু নয়</td></tr>
-            <tr><td>বুট সম্পন্ন</td><td>ডিভাইস পুনরায় চালু হওয়ার পরে নামাজ বিজ্ঞপ্তি পুনরায় নির্ধারণ</td><td>কিছু নয়</td></tr>
-            <tr><td>কম্পন</td><td>কিবলা কম্পাস মক্কার দিকে সারিবদ্ধ হলে হ্যাপটিক ফিডব্যাক</td><td>কিছু নয়</td></tr>
+          <tr><th>অনুমতি</th><th>উদ্দেশ্য</th><th>সার্ভারে পাঠানো ডেটা</th></tr>
+          <tr><td>অবস্থান</td><td>আপনার অবস্থানের উপর ভিত্তি করে সঠিক নামাজের সময় ও কিবলার দিক গণনা</td><td>কিছু নয় — শুধুমাত্র ডিভাইসে প্রক্রিয়া</td></tr>
+          <tr><td>বিজ্ঞপ্তি</td><td>নামাজের সময়ে স্থানীয় স্মরণ পাঠানো</td><td>কিছু নয় — স্থানীয়ভাবে নির্ধারিত</td></tr>
+          <tr><td>নির্ভুল অ্যালার্ম</td><td>নামাজের বিজ্ঞপ্তি নির্ধারিত সময়ে ট্রিগার নিশ্চিত করা</td><td>কিছু নয়</td></tr>
+          <tr><td>বুট সম্পন্ন</td><td>ডিভাইস পুনরায় চালু হওয়ার পরে নামাজ বিজ্ঞপ্তি পুনরায় নির্ধারণ</td><td>কিছু নয়</td></tr>
+          <tr><td>কম্পন</td><td>কিবলা কম্পাস মক্কার দিকে সারিবদ্ধ হলে হ্যাপটিক ফিডব্যাক</td><td>কিছু নয়</td></tr>
         </table>
 
         <h2>৩. স্থানীয় সংরক্ষণ</h2>
@@ -436,10 +738,10 @@
         <h2>৭. আপনার অধিকার</h2>
         <p>প্রযোজ্য গোপনীয়তা আইনের (GDPR সহ) অধীনে আপনার ব্যক্তিগত ডেটা সম্পর্কে অধিকার রয়েছে। যেহেতু nida কোনো ডেটা সংগ্রহ করে না, এই অধিকারগুলি স্বাভাবিকভাবেই সম্মান করা হয়:</p>
         <ul>
-            <li><strong>অ্যাক্সেসের অধিকার:</strong> আমাদের সার্ভারে কোনো ব্যক্তিগত ডেটা সংরক্ষিত নেই।</li>
-            <li><strong>মুছে ফেলার অধিকার:</strong> অ্যাপ আনইনস্টল করলে সমস্ত স্থানীয় পছন্দ মুছে যায়।</li>
-            <li><strong>পোর্টেবিলিটির অধিকার:</strong> স্থানান্তর করার কোনো ডেটা নেই।</li>
-            <li><strong>আপত্তির অধিকার:</strong> কোনো ডেটা প্রক্রিয়াকরণ ঘটে না।</li>
+          <li><strong>অ্যাক্সেসের অধিকার:</strong> আমাদের সার্ভারে কোনো ব্যক্তিগত ডেটা সংরক্ষিত নেই।</li>
+          <li><strong>মুছে ফেলার অধিকার:</strong> অ্যাপ আনইনস্টল করলে সমস্ত স্থানীয় পছন্দ মুছে যায়।</li>
+          <li><strong>পোর্টেবিলিটির অধিকার:</strong> স্থানান্তর করার কোনো ডেটা নেই।</li>
+          <li><strong>আপত্তির অধিকার:</strong> কোনো ডেটা প্রক্রিয়াকরণ ঘটে না।</li>
         </ul>
 
         <h2>৮. ডেটা নিরাপত্তা</h2>
@@ -456,20 +758,47 @@
 
         <h2>১২. যোগাযোগ</h2>
         <p>এই গোপনীয়তা নীতি সম্পর্কে প্রশ্ন থাকলে:<br>
-        <strong>ইমেইল:</strong> <a href="mailto:mehdi.mehni@gmail.com">mehdi.mehni@gmail.com</a><br>
+        <strong>ইমেইল:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
         <strong>অবস্থান:</strong> মন্ট্রিয়াল, কিউবেক, কানাডা</p>
-    </div>
+      </div>
 
-    <script>
-        function show(lang) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            const section = document.getElementById(lang);
-            const navLink = document.getElementById('nav-' + lang);
-            if (section) section.classList.add('active');
-            if (navLink) navLink.classList.add('active');
-        }
-        show('en');
-    </script>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <p class="eyebrow" style="text-align:center">Download</p>
+      <h2 class="cta-title">Try nida — it's free</h2>
+      <p class="cta-sub">Accurate prayer times, Qibla, Athan. No ads, no data, entirely offline.</p>
+      <a href="./" class="cta-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to nida
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="./">nida — Islamic Prayer Times</a>
+  </footer>
+
+  <script>
+    function show(lang) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      const section = document.getElementById(lang);
+      const btn = document.getElementById('tab-' + lang);
+      if (section) section.classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    // Auto-detect language from browser
+    const preferred = navigator.language.split('-')[0];
+    const supported = ['en', 'fr', 'ar', 'tr', 'id', 'ur', 'bn'];
+    show(supported.includes(preferred) ? preferred : 'en');
+  </script>
 </body>
 </html>
