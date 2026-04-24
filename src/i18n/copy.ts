@@ -78,7 +78,7 @@ export interface Copy {
     etymBody: string;
   };
   cta: { h2: string; sub: string };
-  footer: { tag: string; privacy: string };
+  footer: { tag: string; privacy: string; terms: string };
   badges: { playEyebrow: string; playName: string; iosEyebrow: string; iosName: string };
 }
 
@@ -168,7 +168,7 @@ const EN: Copy = {
     etymBody: 'The call. A private one, made in a whisper \u2014 not for the crowd, but for the One who hears.',
   },
   cta: { h2: 'Answer the call.', sub: 'Free. Forever. No ads. No tracking.' },
-  footer: { tag: 'Made for the Ummah', privacy: 'Privacy' },
+  footer: { tag: 'Made for the Ummah', privacy: 'Privacy', terms: 'Terms' },
   badges: { playEyebrow: 'Get it on', playName: 'Google Play', iosEyebrow: 'iOS', iosName: 'Coming soon' },
 };
 
@@ -250,7 +250,7 @@ const FR: Copy = {
     etymBody: 'L\u2019appel. Privé, murmuré — non pas pour la foule, mais pour Celui qui entend.',
   },
   cta: { h2: 'Réponds à l\u2019appel.', sub: 'Gratuit. Pour toujours. Aucune pub. Aucun tracking.' },
-  footer: { tag: 'Fait pour la Oumma', privacy: 'Confidentialité' },
+  footer: { tag: 'Fait pour la Oumma', privacy: 'Confidentialité', terms: 'Conditions' },
   badges: { playEyebrow: 'Télécharger sur', playName: 'Google Play', iosEyebrow: 'iOS', iosName: 'Bientôt' },
 };
 
@@ -332,7 +332,7 @@ const AR: Copy = {
     etymBody: 'النداء. خاصٌّ، يُقال همسًا — ليس للجمع، بل لمن يسمع.',
   },
   cta: { h2: 'لبِّ النداء.', sub: 'مجّانيّ. إلى الأبد. لا إعلانات. لا تتبّع.' },
-  footer: { tag: 'صُنع للأمّة', privacy: 'الخصوصيّة' },
+  footer: { tag: 'صُنع للأمّة', privacy: 'الخصوصيّة', terms: 'الشروط' },
   badges: { playEyebrow: 'حمِّله من', playName: 'Google Play', iosEyebrow: 'iOS', iosName: 'قريبًا' },
 };
 
