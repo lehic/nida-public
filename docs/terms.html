@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nida — Terms &amp; Conditions</title>
+  <meta name="description" content="nida terms and conditions — acceptable use, intellectual property, donations, and liability." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --green:       #143E32;
+      --green-deep:  #0E2419;
+      --gold:        #D4A843;
+      --gold-soft:   #E8C878;
+      --cream:       #F8F6F0;
+      --cream-deep:  #F0EDE6;
+      --stone:       #6B6B6B;
+      --serif: "Fraunces", Georgia, serif;
+      --sans:  "Inter", system-ui, sans-serif;
+    }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--cream-deep);
+      color: var(--green);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, p, ul, ol { margin: 0; }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--green);
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--cream);
+    }
+    .logo-name {
+      font-family: var(--sans);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(245,242,232,0.6);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--cream); }
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Hero strip ── */
+    .page-hero {
+      background: linear-gradient(180deg, var(--green) 0%, #163300 100%);
+      padding: 64px 40px 72px;
+      color: var(--cream);
+    }
+    .page-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .page-subtitle {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(245,242,232,0.65);
+      font-weight: 300;
+      max-width: 540px;
+    }
+
+    /* ── Lang tabs ── */
+    .lang-bar {
+      background: var(--green-deep);
+      padding: 0 40px;
+      border-bottom: 1px solid rgba(212,168,67,0.12);
+    }
+    .lang-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .lang-bar-inner::-webkit-scrollbar { display: none; }
+    .lang-btn {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(245,242,232,0.45);
+      background: none;
+      border: none;
+      padding: 14px 16px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .lang-btn:hover { color: rgba(245,242,232,0.8); }
+    .lang-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ── Content ── */
+    .content-wrap {
+      padding: 64px 40px 100px;
+    }
+    .content-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .section h2 {
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-top: 48px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(20,62,50,0.12);
+    }
+    .section h2:first-of-type { margin-top: 0; }
+
+    .section p,
+    .section ul,
+    .section li {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--stone);
+      font-weight: 300;
+    }
+    .section p { margin-top: 10px; }
+    .section p strong { color: var(--green); font-weight: 600; }
+
+    .section ul {
+      margin-top: 12px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .section li {
+      padding: 8px 0 8px 20px;
+      position: relative;
+    }
+    .section li::before {
+      content: "◆";
+      color: var(--gold);
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 12px;
+    }
+
+    .updated {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--stone);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    /* ── Bottom CTA ── */
+    .cta-section {
+      background: var(--green);
+      padding: 80px 40px;
+      text-align: center;
+      color: var(--cream);
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .cta-title {
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .cta-sub {
+      font-family: var(--sans);
+      font-size: 16px;
+      color: rgba(245,242,232,0.6);
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--green);
+      background: var(--cream);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--green-deep);
+      padding: 28px 40px;
+      text-align: center;
+    }
+    .site-footer a {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: rgba(245,242,232,0.35);
+      text-decoration: none;
+    }
+    .site-footer a:hover { color: rgba(245,242,232,0.6); }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .site-header { padding: 0 20px; }
+      .page-hero { padding: 48px 20px 56px; }
+      .page-title { font-size: 40px; }
+      .lang-bar { padding: 0 20px; }
+      .content-wrap { padding: 48px 20px 80px; }
+      .cta-section { padding: 60px 20px; }
+      .cta-title { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="./" class="logo">
+        <svg width="22" height="18.9" viewBox="0 0 100 86" style="display:block;flex-shrink:0" aria-hidden="true">
+          <rect x="10" y="16" width="80" height="64" rx="3" fill="#0A0A0A"/>
+          <rect x="10" y="42" width="80" height="10" fill="#D4A843"/>
+          <rect x="4" y="8" width="92" height="10" rx="2" fill="#0A0A0A"/>
+        </svg>
+        <span class="logo-name">nida</span>
+      </a>
+      <a href="./" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to nida
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow">Legal</div>
+      <h1 class="page-title">Terms &amp; Conditions</h1>
+      <p class="page-subtitle">The rules for using nida — simple, fair, and respectful of your time.</p>
+    </div>
+  </div>
+
+  <!-- Language tabs -->
+  <div class="lang-bar">
+    <div class="lang-bar-inner">
+      <button class="lang-btn active" onclick="show('en')" id="tab-en">English</button>
+      <button class="lang-btn" onclick="show('fr')" id="tab-fr">Français</button>
+      <button class="lang-btn" onclick="show('ar')" id="tab-ar" style="font-family:'Noto Naskh Arabic',serif;font-size:13px">العربية</button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content-wrap">
+    <div class="content-inner">
+
+      <!-- ENGLISH -->
+      <div id="en" class="section active">
+        <span class="updated">Last updated: April 24, 2026</span>
+
+        <p>By downloading or using <strong>nida</strong>, you agree to these Terms &amp; Conditions. If you do not agree, please do not use the app.</p>
+
+        <h2>1. Acceptable Use</h2>
+        <p>nida is provided for personal, non-commercial use. You agree not to:</p>
+        <ul>
+          <li>Reverse-engineer, decompile, or disassemble the application</li>
+          <li>Use the app for any unlawful purpose</li>
+          <li>Redistribute, resell, or sublicense the application</li>
+          <li>Attempt to extract or scrape the app's assets or source code</li>
+        </ul>
+
+        <h2>2. Intellectual Property</h2>
+        <p>nida, its name, logo, design, and all content are the property of Mehdi Mehni. All rights reserved. The app is licensed to you, not sold. This licence is personal, non-transferable, and revocable.</p>
+
+        <h2>3. Donations</h2>
+        <p>nida is free. Donations made through the app or linked platforms are entirely voluntary and non-refundable. <strong>Donating does not entitle you to premium features, priority support, or any special treatment.</strong> All users have access to the full app regardless of donation status.</p>
+
+        <h2>4. Prayer Times Disclaimer</h2>
+        <p>Prayer times in nida are calculated algorithmically based on your location and the selected calculation method. They may differ from your local mosque's schedule or official religious authority sources. <strong>nida is not a substitute for verified religious guidance.</strong> We recommend consulting your local mosque or a qualified scholar for confirmation.</p>
+
+        <h2>5. Disclaimer of Warranties</h2>
+        <p>nida is provided <strong>"as is"</strong> without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not warrant that the app will be uninterrupted, error-free, or free of viruses.</p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, Mehdi Mehni shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of — or inability to use — nida, even if advised of the possibility of such damages.</p>
+
+        <h2>7. Changes to These Terms</h2>
+        <p>We may update these Terms at any time by posting a revised version on this page. Your continued use of nida after any changes constitutes your acceptance of the updated Terms.</p>
+
+        <h2>8. Governing Law</h2>
+        <p>These Terms are governed by the laws of the Province of Quebec, Canada, without regard to conflict of law principles.</p>
+
+        <h2>9. Contact</h2>
+        <p>For questions about these Terms:<br>
+        <strong>Email:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
+        <strong>Location:</strong> Montreal, Quebec, Canada</p>
+      </div>
+
+      <!-- FRENCH -->
+      <div id="fr" class="section" lang="fr">
+        <span class="updated">Dernière mise à jour : 24 avril 2026</span>
+
+        <p>En téléchargeant ou en utilisant <strong>nida</strong>, vous acceptez les présentes Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'application.</p>
+
+        <h2>1. Utilisation acceptable</h2>
+        <p>nida est fourni pour un usage personnel et non commercial. Vous vous engagez à ne pas :</p>
+        <ul>
+          <li>Décompiler, désassembler ou tenter de rétro-concevoir l'application</li>
+          <li>Utiliser l'application à des fins illégales</li>
+          <li>Redistribuer, revendre ou sous-licencier l'application</li>
+          <li>Tenter d'extraire les ressources ou le code source de l'application</li>
+        </ul>
+
+        <h2>2. Propriété intellectuelle</h2>
+        <p>nida, son nom, son logo, son design et tout son contenu sont la propriété de Mehdi Mehni. Tous droits réservés. L'application vous est accordée sous licence, et non vendue. Cette licence est personnelle, non transférable et révocable.</p>
+
+        <h2>3. Dons</h2>
+        <p>nida est gratuit. Les dons effectués via l'application ou les plateformes liées sont entièrement volontaires et non remboursables. <strong>Faire un don ne vous donne droit à aucune fonctionnalité premium, support prioritaire ou traitement spécial.</strong> Tous les utilisateurs ont accès à l'intégralité de l'application, quel que soit leur statut de donateur.</p>
+
+        <h2>4. Avis sur les horaires de prière</h2>
+        <p>Les horaires de prière de nida sont calculés algorithmiquement en fonction de votre position et de la méthode de calcul sélectionnée. Ils peuvent différer de l'horaire de votre mosquée locale ou des sources d'autorités religieuses officielles. <strong>nida ne remplace pas un avis religieux vérifié.</strong> Nous vous recommandons de consulter votre mosquée locale ou un savant qualifié pour confirmation.</p>
+
+        <h2>5. Exclusion de garanties</h2>
+        <p>nida est fourni <strong>« tel quel »</strong>, sans garantie d'aucune sorte, expresse ou implicite, y compris les garanties de qualité marchande, d'adéquation à un usage particulier ou de non-contrefaçon. Nous ne garantissons pas que l'application sera ininterrompue, sans erreur ou exempte de virus.</p>
+
+        <h2>6. Limitation de responsabilité</h2>
+        <p>Dans toute la mesure permise par la loi applicable, Mehdi Mehni ne sera pas responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs résultant de votre utilisation — ou de votre impossibilité d'utiliser — nida, même si informé de la possibilité de tels dommages.</p>
+
+        <h2>7. Modifications des présentes conditions</h2>
+        <p>Nous pouvons mettre à jour ces Conditions à tout moment en publiant une version révisée sur cette page. Votre utilisation continue de nida après toute modification constitue votre acceptation des Conditions mises à jour.</p>
+
+        <h2>8. Droit applicable</h2>
+        <p>Les présentes Conditions sont régies par les lois de la Province de Québec, Canada, sans égard aux principes de conflits de lois.</p>
+
+        <h2>9. Contact</h2>
+        <p>Pour toute question concernant ces Conditions :<br>
+        <strong>Courriel :</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
+        <strong>Lieu :</strong> Montréal, Québec, Canada</p>
+      </div>
+
+      <!-- ARABIC -->
+      <div id="ar" class="section" lang="ar" dir="rtl" style="font-family:'Noto Naskh Arabic',serif">
+        <span class="updated" style="font-family:'Noto Naskh Arabic',serif">آخر تحديث: 24 أبريل 2026</span>
+
+        <p>بتنزيل <strong>nida</strong> أو استخدامه، فإنك توافق على شروط الاستخدام هذه. إذا كنت لا توافق، يرجى عدم استخدام التطبيق.</p>
+
+        <h2>1. الاستخدام المقبول</h2>
+        <p>يُقدَّم تطبيق nida للاستخدام الشخصي غير التجاري. توافق على عدم القيام بما يلي:</p>
+        <ul>
+          <li>إجراء هندسة عكسية للتطبيق أو فك ترميزه أو تفكيكه</li>
+          <li>استخدام التطبيق لأي غرض غير مشروع</li>
+          <li>إعادة توزيع التطبيق أو بيعه أو منح تراخيص فرعية له</li>
+          <li>محاولة استخراج أصول التطبيق أو الكود المصدري</li>
+        </ul>
+
+        <h2>2. الملكية الفكرية</h2>
+        <p>تطبيق nida واسمه وشعاره وتصميمه وجميع محتوياته هي ملك لمهدي مهني. جميع الحقوق محفوظة. يُمنح لك التطبيق بموجب ترخيص، وليس مباعًا لك. هذا الترخيص شخصي وغير قابل للتحويل وقابل للإلغاء.</p>
+
+        <h2>3. التبرعات</h2>
+        <p>تطبيق nida مجاني. التبرعات المقدمة عبر التطبيق أو المنصات المرتبطة طوعية تمامًا وغير قابلة للاسترداد. <strong>لا يُخوِّلك التبرع الحصول على ميزات مميزة أو دعم ذي أولوية أو أي معاملة خاصة.</strong> جميع المستخدمين لديهم حق الوصول إلى التطبيق كاملًا بصرف النظر عن وضع التبرع.</p>
+
+        <h2>4. إخلاء مسؤولية مواقيت الصلاة</h2>
+        <p>تُحسب مواقيت الصلاة في تطبيق nida بشكل خوارزمي بناءً على موقعك وطريقة الحساب المختارة. قد تختلف عن جدول مسجدك المحلي أو مصادر الهيئات الدينية الرسمية. <strong>tطبيق nida لا يُغني عن الإرشاد الديني المُتحقق منه.</strong> نوصي بالرجوع إلى مسجدك المحلي أو عالم مؤهل للتأكيد.</p>
+
+        <h2>5. إخلاء مسؤولية الضمانات</h2>
+        <p>يُقدَّم تطبيق nida <strong>"كما هو"</strong> دون أي ضمان من أي نوع، صريحًا أو ضمنيًا، بما في ذلك ضمانات القابلية للتسويق أو الملاءمة لغرض معين أو عدم الانتهاك. لا نضمن أن التطبيق سيكون بلا انقطاع أو خاليًا من الأخطاء.</p>
+
+        <h2>6. تحديد المسؤولية</h2>
+        <p>إلى أقصى حد يسمح به القانون المعمول به، لن يكون مهدي مهني مسؤولًا عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية ناجمة عن استخدامك — أو عدم قدرتك على استخدام — تطبيق nida، حتى لو تم إخطاره باحتمال وقوع مثل هذه الأضرار.</p>
+
+        <h2>7. التغييرات على هذه الشروط</h2>
+        <p>يجوز لنا تحديث هذه الشروط في أي وقت بنشر نسخة منقحة على هذه الصفحة. استمرارك في استخدام تطبيق nida بعد أي تغييرات يُعدّ قبولًا منك للشروط المحدَّثة.</p>
+
+        <h2>8. القانون الحاكم</h2>
+        <p>تخضع هذه الشروط لقوانين مقاطعة كيبك، كندا، دون مراعاة مبادئ تعارض القوانين.</p>
+
+        <h2>9. التواصل</h2>
+        <p>لأي أسئلة حول هذه الشروط:<br>
+        <strong>البريد الإلكتروني:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
+        <strong>الموقع:</strong> مونتريال، كيبك، كندا</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <p class="eyebrow" style="text-align:center">Download</p>
+      <h2 class="cta-title">Try nida — it's free</h2>
+      <p class="cta-sub">Accurate prayer times, Qibla, Athan. No ads, no data, entirely offline.</p>
+      <a href="./" class="cta-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to nida
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="./">nida — Islamic Prayer Times</a>
+  </footer>
+
+  <script>
+    function show(lang) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      const section = document.getElementById(lang);
+      const btn = document.getElementById('tab-' + lang);
+      if (section) section.classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    const preferred = navigator.language.split('-')[0];
+    const supported = ['en', 'fr', 'ar'];
+    show(supported.includes(preferred) ? preferred : 'en');
+  </script>
+</body>
+</html>
