@@ -1,0 +1,27 @@
+---
+import Kaaba from './Kaaba.astro';
+import PlayBadge from './PlayBadge.astro';
+import IOSBadge from './IOSBadge.astro';
+import type { Copy } from '../i18n/copy';
+interface Props { t: Copy }
+const { t } = Astro.props;
+---
+<section class="cta-sec" style="padding:140px 60px 130px;background:var(--nida-ink);color:var(--nida-cream);text-align:center;border-top:1px solid rgba(212,168,67,0.2);position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(212,168,67,0.08) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="position:relative">
+    <div style="display:flex;justify-content:center">
+      <Kaaba size={44} />
+    </div>
+    <h2 class="cta-h2" style="font-size:92px;line-height:1;font-weight:400;letter-spacing:-0.035em;margin:36px 0 24px;text-wrap:balance">
+      {t.cta.h2}
+    </h2>
+    <div style="width:56px;height:1px;background:var(--nida-gold);margin:0 auto 28px;opacity:0.5"></div>
+    <p style="font-family:var(--sans);font-size:16px;color:rgba(245,242,232,0.55);margin-bottom:48px;font-weight:300;letter-spacing:0.02em">
+      {t.cta.sub}
+    </p>
+    <div style="direction:ltr;display:inline-flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center">
+      <PlayBadge bg="#F8F6F0" fg="#143E32" subtle="rgba(14,36,25,0.55)" eyebrow={t.badges.playEyebrow} name={t.badges.playName} />
+      <IOSBadge fg="#F8F6F0" subtle="rgba(245,242,232,0.5)" eyebrow={t.badges.iosEyebrow} name={t.badges.iosName} />
+    </div>
+  </div>
+</section>

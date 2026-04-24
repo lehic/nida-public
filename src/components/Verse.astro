@@ -1,0 +1,40 @@
+---
+import type { Copy } from '../i18n/copy';
+interface Props { t: Copy }
+const { t } = Astro.props;
+const v = t.verse;
+---
+<section class="verse-sec" style="position:relative;padding:170px 60px 160px;background:var(--nida-green);color:var(--nida-cream);overflow:hidden;border-top:1px solid var(--nida-gold)">
+  <!-- Ghost text -->
+  <div aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Naskh Arabic',serif;font-size:380px;font-weight:500;color:rgba(212,168,67,0.06);letter-spacing:-0.02em;line-height:1;pointer-events:none;white-space:nowrap;direction:rtl;user-select:none">
+    نِدَاءً خَفِيًّا
+  </div>
+
+  <!-- Citation bar -->
+  <div style="position:relative;display:flex;align-items:center;gap:18px;justify-content:center;margin-bottom:64px">
+    <span style="width:56px;height:1px;background:var(--nida-gold);opacity:0.4;display:inline-block"></span>
+    <span style="font-family:var(--sans);font-size:10px;letter-spacing:0.38em;color:var(--nida-gold);text-transform:uppercase;font-weight:600">{v.citation}</span>
+    <span style="width:56px;height:1px;background:var(--nida-gold);opacity:0.4;display:inline-block"></span>
+  </div>
+
+  <!-- Quote -->
+  <div style="position:relative;max-width:980px;margin:0 auto;text-align:center">
+    <div class="verse-quote" style="font-family:var(--serif);font-size:58px;line-height:1.15;font-weight:300;letter-spacing:-0.025em;text-wrap:balance;color:var(--nida-cream)">
+      <span style="color:#E8C878;font-size:80px;line-height:0.5;display:inline-block;vertical-align:-0.2em;margin-inline-end:6px;font-style:italic">"</span>
+      {v.quote.before}<em style="font-style:italic;color:#E8C878;font-weight:400">{v.quote.em}</em>{v.quote.after}
+      <span style="color:#E8C878;font-size:80px;line-height:0.5;display:inline-block;vertical-align:-0.2em;margin-inline-start:6px;font-style:italic">"</span>
+    </div>
+
+    <!-- Transliteration -->
+    <div style="font-family:var(--serif);font-size:24px;font-style:italic;font-weight:300;color:rgba(245,242,232,0.55);margin-top:32px;letter-spacing:0.02em;direction:ltr">
+      {v.translit.before}<span style="color:#E8C878;font-style:normal;font-weight:500">{v.translit.em}</span>
+    </div>
+
+    <!-- Etymology -->
+    <div style="font-family:var(--sans);font-size:13px;color:rgba(245,242,232,0.5);margin:52px auto 0;font-weight:300;letter-spacing:0.04em;max-width:540px;line-height:1.75">
+      <span style="color:var(--nida-gold);font-weight:600;letter-spacing:0.22em;text-transform:uppercase;font-size:10px">{v.etymLabel}</span>
+      <span style="margin:0 12px;opacity:0.3">·</span>
+      {v.etymBody}
+    </div>
+  </div>
+</section>

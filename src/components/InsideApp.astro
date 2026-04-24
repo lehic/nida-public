@@ -1,0 +1,32 @@
+---
+import PhoneMock from './PhoneMock.astro';
+import type { Copy, Lang } from '../i18n/copy';
+interface Props { t: Copy; lang: Lang }
+const { t, lang } = Astro.props;
+const s = t.screens;
+---
+<section class="inside-sec" style="padding:110px 60px;background:var(--nida-green);color:var(--nida-cream)">
+  <div style="max-width:1200px;margin:0 auto">
+  <div class="inside-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+    <div>
+      <div class="eyebrow">{s.eyebrow}</div>
+      <h2 class="inside-h2" style="font-size:54px;line-height:1;font-weight:400;letter-spacing:-0.03em;margin-top:18px">{s.h2}</h2>
+      <p style="font-family:var(--sans);font-size:17px;line-height:1.65;color:rgba(245,242,232,0.7);max-width:460px;margin-top:24px;font-weight:300;text-wrap:pretty">
+        {s.lede}
+      </p>
+      <ul style="margin-top:36px;font-family:var(--sans);font-size:15px">
+        {s.bullets.map((b) => (
+          <li style="padding:16px 0;border-top:1px solid rgba(245,242,232,0.15);display:flex;gap:16px;font-weight:300">
+            <span style="color:var(--nida-gold);font-size:11px;flex-shrink:0;padding-top:3px">◆</span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div style="display:flex;gap:18px;justify-content:center;align-items:flex-start">
+      <PhoneMock src={`${import.meta.env.BASE_URL}assets/screens/home_${lang}.jpg`} alt="nida home screen" width={230} tilt={-3} />
+      <div class="inside-phone2"><PhoneMock src={`${import.meta.env.BASE_URL}assets/screens/qibla_${lang}.jpg`} alt="nida qibla screen" width={230} tilt={3} /></div>
+    </div>
+  </div>
+  </div>
+</section>

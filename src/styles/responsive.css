@@ -1,0 +1,60 @@
+@media (max-width: 768px) {
+
+  /* ─── NavBar ─── */
+  .navbar { margin-bottom: 40px !important; }
+
+  /* ─── Hero ─── */
+  .hero-sec  { padding: 24px 20px 80px !important; }
+  .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .hero-h1   { font-size: 48px !important; line-height: 1.05 !important; }
+  .hero-phone { display: none !important; }
+
+  /* ─── RedLines ─── */
+  .rl-sec   { padding: 60px 20px !important; }
+  .rl-grid  { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .rl-h2    { font-size: 40px !important; }
+  .rl-h3    { font-size: 36px !important; }
+  .rl-rest  { font-size: 24px !important; }
+  .rl-stage { padding: 32px 24px 60px !important; min-height: 340px !important; }
+  .rl-ghost { display: none !important; }
+
+  /* ─── Pillars ─── */
+  .pillars-sec    { padding: 60px 20px !important; }
+  .pillars-header { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .pillars-h2     { font-size: 36px !important; }
+  .pillars-cards  { grid-template-columns: 1fr !important; }
+
+  /* ─── InsideApp ─── */
+  .inside-sec    { padding: 60px 20px !important; }
+  .inside-grid   { grid-template-columns: 1fr !important; }
+  .inside-h2     { font-size: 36px !important; }
+  .inside-phone2 { display: none !important; }
+
+  /* ─── Method ─── */
+  .method-sec   { padding: 60px 20px !important; }
+  .method-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .method-h2    { font-size: 30px !important; }
+  .method-row   { grid-template-columns: 64px 1fr !important; gap: 8px !important; }
+  .method-angle { display: none !important; }
+
+  /* ─── FAQ ─── */
+  .faq-sec { padding: 60px 20px !important; }
+  .faq-h2  { font-size: 36px !important; }
+
+  /* ─── Verse ─── */
+  .verse-sec   { padding: 80px 20px !important; }
+  .verse-quote { font-size: 30px !important; line-height: 1.3 !important; }
+
+  /* ─── CTA ─── */
+  .cta-sec { padding: 80px 20px !important; }
+  .cta-h2  { font-size: 52px !important; }
+
+  /* ─── Footer ─── */
+  .footer-main {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 24px 20px !important;
+    text-align: center;
+  }
+}

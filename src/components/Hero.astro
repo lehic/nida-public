@@ -1,0 +1,121 @@
+---
+import NavBar from './NavBar.astro';
+import PhoneMock from './PhoneMock.astro';
+import PlayBadge from './PlayBadge.astro';
+import IOSBadge from './IOSBadge.astro';
+import type { Copy, Lang } from '../i18n/copy';
+
+interface Props {
+  t: Copy;
+  lang: Lang;
+}
+const { t, lang } = Astro.props;
+const hero = t.hero.direct;
+const dir = t.dir;
+const tilt = dir === 'rtl' ? 2 : -2;
+const screenImg = `${import.meta.env.BASE_URL}assets/screens/home_${lang}.jpg`;
+---
+
+<section
+  id="hero-section"
+  class="hero-sec"
+  style="position:relative;overflow:hidden;color:#F8F6F0;padding:28px 60px 120px;transition:background 2s linear"
+>
+  <div style="max-width:1200px;margin:0 auto">
+  <NavBar lang={lang} />
+
+  <div class="hero-grid" style={`display:grid;grid-template-columns:1.25fr 1fr;gap:70px;align-items:center;margin-top:20px`}>
+    <!-- Left: text -->
+    <div>
+      <!-- Eyebrow pill -->
+      <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:32px;padding:8px 16px 8px 10px;border:1px solid rgba(212,168,67,0.35);border-radius:100px;background:rgba(212,168,67,0.08)">
+        <span style="font-family:'Noto Naskh Arabic',serif;font-size:18px;color:#E8C878;font-weight:600;direction:rtl">{hero.eyebrow.ar}</span>
+        <span style="width:1px;height:14px;background:rgba(212,168,67,0.4);display:inline-block"></span>
+        <span style="font-family:var(--sans);font-size:12px;letter-spacing:0.22em;color:#D4A843;text-transform:uppercase;font-weight:600;direction:ltr">{hero.eyebrow.latin}</span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="hero-h1" style={`font-size:${dir === 'rtl' ? 74 : 88}px;line-height:${dir === 'rtl' ? 1.15 : 0.98};font-weight:400;letter-spacing:-0.035em;margin:0;text-wrap:balance`}>
+        {hero.h1Parts[0]}<br />
+        {hero.h1Parts[1]}<em style="color:#E8C878;font-style:italic">{hero.h1Parts[2]}</em>{hero.h1Parts[3]}
+      </h1>
+
+      <p style="font-family:var(--sans);font-size:19px;line-height:1.65;color:rgba(245,242,232,0.72);max-width:500px;margin-top:36px;font-weight:300;text-wrap:pretty">
+        {hero.sub}
+      </p>
+
+      <div style="display:flex;gap:14px;margin-top:48px;align-items:center;flex-wrap:wrap;direction:ltr">
+        <PlayBadge bg="#F8F6F0" fg="#143E32" subtle="rgba(14,36,25,0.55)" eyebrow={t.badges.playEyebrow} name={t.badges.playName} />
+        <IOSBadge fg="#F8F6F0" subtle="rgba(245,242,232,0.55)" eyebrow={t.badges.iosEyebrow} name={t.badges.iosName} />
+      </div>
+    </div>
+
+    <!-- Right: phone mock -->
+    <div class="hero-phone" style={`justify-self:${dir === 'rtl' ? 'start' : 'end'};position:relative`}>
+      <div style="position:absolute;inset:-50px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(232,200,120,0.11) 0%,transparent 65%);filter:blur(24px);pointer-events:none"></div>
+      <div style="position:relative">
+        <PhoneMock
+          src={screenImg}
+          alt="nida app home screen"
+          width={320}
+          tilt={tilt}
+          shadow="0 60px 120px -30px rgba(0,0,0,0.6),0 0 0 1px rgba(245,242,232,0.08)"
+        />
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+  function computePhase(): number {
+    const d = new Date();
+    return (d.getHours() * 60 + d.getMinutes()) / (24 * 60);
+  }
+
+  function mix(h1: string, h2: string, k: number): string {
+    const parse = (h: string) => [
+      parseInt(h.slice(1, 3), 16),
+      parseInt(h.slice(3, 5), 16),
+      parseInt(h.slice(5, 7), 16),
+    ];
+    const a = parse(h1), b = parse(h2);
+    const r = a.map((v, i) => Math.round(v + (b[i] - v) * k));
+    return '#' + r.map((v) => v.toString(16).padStart(2, '0')).join('');
+  }
+
+  interface Stop { at: number; a: string; b: string }
+
+  function interpStops(stops: Stop[], t: number): { a: string; b: string } {
+    for (let i = 0; i < stops.length - 1; i++) {
+      const s = stops[i], e = stops[i + 1];
+      if (t >= s.at && t <= e.at) {
+        const k = (t - s.at) / (e.at - s.at);
+        return { a: mix(s.a, e.a, k), b: mix(s.b, e.b, k) };
+      }
+    }
+    return { a: stops[0].a, b: stops[0].b };
+  }
+
+  const STOPS: Stop[] = [
+    { at: 0.00, a: '#0E2419', b: '#6B4A2A' },
+    { at: 0.21, a: '#1B3A2B', b: '#E8C878' },
+    { at: 0.50, a: '#2A1F2A', b: '#C9582F' },
+    { at: 0.75, a: '#0A1814', b: '#2A3A44' },
+    { at: 1.00, a: '#0E2419', b: '#6B4A2A' },
+  ];
+
+  function updateGradient() {
+    const section = document.getElementById('hero-section');
+    if (!section) return;
+    const { a, b } = interpStops(STOPS, computePhase());
+    section.style.background = `radial-gradient(ellipse 90% 60% at 80% 20%,${b}55 0%,transparent 60%),linear-gradient(180deg,${a} 0%,#163300 100%)`;
+  }
+
+  updateGradient();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(updateGradient, 60_000);
+  }
+
+</script>
