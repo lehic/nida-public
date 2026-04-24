@@ -104,7 +104,7 @@ const EN: Copy = {
   pillars: {
     eyebrow: 'Three pillars',
     h2Lines: ['Reliable.', 'Serene.', 'Respectful.'],
-    lede: 'Every prayer app keeps adding things. We keep removing them. Nida does three things — and does each one with the precision the act of prayer deserves.',
+    lede: 'Every prayer app keeps adding things. We keep removing them. nida does three things — and does each one with the precision the act of prayer deserves.',
     items: [
       { n: '01', t: 'Reliable',   d: 'The Athan fires on time. Every time. Offline calculation, validated against reference sources. A minute off can mean a missed prayer.' },
       { n: '02', t: 'Serene',     d: 'No clutter. No dark patterns. No streaks built to create anxiety. The interface serves khushu — if a pixel doesn\u2019t help you pray, it doesn\u2019t belong.' },
@@ -114,9 +114,9 @@ const EN: Copy = {
   redLines: {
     eyebrow: 'Our promise',
     h2Parts: ['Three things', 'we will ', 'never', ' do.'],
-    lede: 'Not for growth. Not for investors. Not \u201cjust this once\u201d. These are not features \u2014 they are the foundation. If any of them breaks, Nida is no longer Nida.',
+    lede: 'Not for growth. Not for investors. Not \u201cjust this once\u201d. These are not features \u2014 they are the foundation. If any of them breaks, nida is no longer nida.',
     signatureCaption: 'A contract with every user.',
-    signatureLine: '\u2014 Signed, the Nida team.',
+    signatureLine: '\u2014 Signed, the nida team.',
     items: [
       { tag: 'No ads',     verb: 'Never', bold: 'ads',              rest: 'between you and your salat.',           why: 'Your prayer screen is not ad space. Ever.' },
       { tag: 'No cloud',   verb: 'Never', bold: 'off-device data.', rest: 'No telemetry. No accounts. No servers.', why: 'The safest data is data that never leaves your phone.' },
@@ -157,7 +157,7 @@ const EN: Copy = {
       { q: 'What about my privacy?',           a: 'Nothing leaves your phone. No telemetry, no analytics, no accounts, no ad networks. The safest data is data that never exists on a server.' },
       { q: 'iOS \u2014 when?',                 a: 'The iOS build is in progress. Sign up below (your email stays private) to know when it ships.' },
       { q: 'Why not just use an existing app?', a: 'Because the dominant prayer apps became ad-heavy super-apps that serve advertisers first. One sold a hundred million Muslims\u2019 GPS data. A prayer app\u2019s only job is to help you pray on time.' },
-      { q: 'Who is behind Nida?',             a: 'A small independent team. No VCs. No investors. No growth targets. Just a commitment to do one thing right.' },
+      { q: 'Who is behind nida?',             a: 'A small independent team. No VCs. No investors. No growth targets. Just a commitment to do one thing right.' },
     ],
   },
   verse: {
@@ -186,7 +186,7 @@ const FR: Copy = {
   pillars: {
     eyebrow: 'Trois piliers',
     h2Lines: ['Fiable.', 'Serein.', 'Respectueux.'],
-    lede: 'Les autres applis de prière ne font qu\u2019ajouter. Nous, on retire. Nida fait trois choses — et les fait avec la précision que l\u2019acte de prière mérite.',
+    lede: 'Les autres applis de prière ne font qu\u2019ajouter. Nous, on retire. nida fait trois choses — et les fait avec la précision que l\u2019acte de prière mérite.',
     items: [
       { n: '01', t: 'Fiable',      d: 'L\u2019Athan sonne à l\u2019heure. À chaque fois. Calcul hors-ligne, validé contre des sources de référence. Une minute de retard, c\u2019est parfois une prière manquée.' },
       { n: '02', t: 'Serein',      d: 'Pas d\u2019encombrement. Pas de dark patterns. Pas de séries quotidiennes conçues pour créer de l\u2019anxiété. L\u2019interface sert le khushu — si un pixel ne t\u2019aide pas à prier, il n\u2019a rien à faire là.' },
@@ -196,9 +196,9 @@ const FR: Copy = {
   redLines: {
     eyebrow: 'Notre promesse',
     h2Parts: ['Trois choses', 'que nous ne ferons ', 'jamais', '.'],
-    lede: 'Pas pour la croissance. Pas pour les investisseurs. Pas \u00ab\u00a0juste cette fois\u00a0\u00bb. Ce ne sont pas des fonctionnalités — c\u2019est la fondation. Si l\u2019une d\u2019elles cède, Nida n\u2019est plus Nida.',
+    lede: 'Pas pour la croissance. Pas pour les investisseurs. Pas \u00ab\u00a0juste cette fois\u00a0\u00bb. Ce ne sont pas des fonctionnalités — c\u2019est la fondation. Si l\u2019une d\u2019elles cède, nida n\u2019est plus nida.',
     signatureCaption: 'Un contrat avec chaque utilisateur.',
-    signatureLine: '\u2014 Signé, l\u2019équipe Nida.',
+    signatureLine: '\u2014 Signé, l\u2019équipe nida.',
     items: [
       { tag: 'Aucune pub',    verb: 'Jamais',  bold: 'de publicité',             rest: 'entre toi et ta salat.',                            why: 'Ton écran de prière n\u2019est pas un espace publicitaire. Jamais.' },
       { tag: 'Aucun cloud',   verb: 'Jamais',  bold: 'de données dans le cloud.', rest: 'Pas de télémétrie. Pas de comptes. Pas de serveurs.', why: 'Les données les plus sûres sont celles qui ne quittent jamais ton téléphone.' },
@@ -239,7 +239,7 @@ const FR: Copy = {
       { q: 'Et ma vie privée\u00a0?',                            a: 'Rien ne quitte ton téléphone. Pas de télémétrie, pas d\u2019analytics, pas de compte, pas de régie publicitaire. Les données les plus sûres sont celles qui n\u2019existent sur aucun serveur.' },
       { q: 'iOS — c\u2019est pour quand\u00a0?',                 a: 'La version iOS est en cours. Inscris-toi ci-dessous (ton email reste privé) pour être averti·e quand elle sort.' },
       { q: 'Pourquoi pas utiliser une appli existante\u00a0?',   a: 'Parce que les applis dominantes sont devenues des super-apps saturées de pub, qui servent d\u2019abord les annonceurs. L\u2019une d\u2019elles a vendu les données GPS de cent millions de musulmans. Une appli de prière a un seul rôle\u00a0: t\u2019aider à prier à l\u2019heure.' },
-      { q: 'Qui est derrière Nida\u00a0?',                      a: 'Une petite équipe indépendante. Pas de VC. Pas d\u2019investisseurs. Pas d\u2019objectifs de croissance. Juste l\u2019engagement de bien faire une seule chose.' },
+      { q: 'Qui est derrière nida\u00a0?',                      a: 'Une petite équipe indépendante. Pas de VC. Pas d\u2019investisseurs. Pas d\u2019objectifs de croissance. Juste l\u2019engagement de bien faire une seule chose.' },
     ],
   },
   verse: {
