@@ -2,7 +2,7 @@
 import type { Copy, Lang } from '../i18n/copy';
 interface Props { t: Copy; lang: Lang }
 const { t, lang } = Astro.props;
-const privacyHref = '/privacy.html';
+const privacyHref = `${import.meta.env.BASE_URL}privacy.html`;
 ---
 <footer class="footer-main" style="padding:40px 60px;background:var(--nida-splash-black);color:rgba(245,245,245,0.5);font-family:var(--sans);font-size:12px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(212,168,67,0.15)">
   <span>© 2026 nida · نِدَاء</span>
