@@ -132,7 +132,7 @@ const EN: Copy = {
       'Qibla compass \u00b7 figure-eight calibration',
       'Prayer tracking \u00b7 100% on-device',
       '10+ calculation methods, each one explained',
-      '7 languages \u00b7 built for the global Ummah',
+      '8 languages \u00b7 built for the global Ummah',
     ],
   },
   method: {
@@ -215,7 +215,7 @@ const FR: Copy = {
       'Boussole qibla \u00b7 calibration en huit',
       'Suivi des prières \u00b7 100\u00a0% sur l\u2019appareil',
       '10+ méthodes de calcul, chacune expliquée',
-      '7 langues \u00b7 pour toute l\u2019Oumma',
+      '8 langues \u00b7 pour toute l\u2019Oumma',
     ],
   },
   method: {
@@ -298,7 +298,7 @@ const AR: Copy = {
       'بوصلة القِبلة · معايرة الرقم ثمانية',
       'متابعة الصلوات · ١٠٠٪ على الجهاز',
       'أكثر من ١٠ طرق حساب، كلٌّ منها مشروحة',
-      '٧ لغات \u00b7 بُنيت للأمّة',
+      '٨ لغات \u00b7 بُنيت للأمّة',
     ],
   },
   method: {
