@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" width="560" height="180" role="img" aria-label="nida">
+  <title>nida</title>
+  <defs>
+    
+  </defs>
+  <text x="30" y="140" class="wm" fill="#FFFFFF">n</text>
+  <text x="125" y="140" class="wm" fill="#FFFFFF">ı</text>
+  <g transform="translate(130, 20)">
+    <rect x="0" y="8" width="40" height="30" rx="1.5" fill="#FFFFFF"></rect>
+    <rect x="0" y="19" width="40" height="5" fill="#FFFFFF"></rect>
+    <rect x="13" y="28" width="14" height="12" rx="6" fill="#FFFFFF" opacity="0.35"></rect>
+    <rect x="-4" y="4" width="48" height="5" rx="1.5" fill="#FFFFFF"></rect>
+  </g>
+  <text x="185" y="140" class="wm" fill="#FFFFFF">d</text>
+  <text x="300" y="140" class="wm" fill="#FFFFFF">a</text>
+  <text x="335" y="122" font-family="&#39;Noto Naskh Arabic&#39;, serif" font-size="52" font-weight="400" fill="#FFFFFF">ء</text>
+</svg>

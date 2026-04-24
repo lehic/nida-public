@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="nida monogram">
+  <title>nida monogram</title>
+  <rect width="200" height="200" rx="40" fill="#163300"></rect>
+  
+  <g transform="translate(60, 70)">
+    <rect x="0" y="12" width="80" height="60" rx="3" fill="#FFFFFF"></rect>
+    <rect x="0" y="34" width="80" height="10" fill="#D4A843"></rect>
+    <rect x="26" y="52" width="28" height="20" rx="10" fill="#D4A843" opacity="0.5"></rect>
+    <rect x="-8" y="0" width="96" height="10" rx="3" fill="#FFFFFF"></rect>
+  </g>
+</svg>
