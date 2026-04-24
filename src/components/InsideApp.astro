@@ -24,8 +24,8 @@ const s = t.screens;
       </ul>
     </div>
     <div style="display:flex;gap:18px;justify-content:center;align-items:flex-start">
-      <PhoneMock src={`/assets/screens/home_${lang}.jpg`} alt="nida home screen" width={230} tilt={-3} />
-      <div class="inside-phone2"><PhoneMock src={`/assets/screens/qibla_${lang}.jpg`} alt="nida qibla screen" width={230} tilt={3} /></div>
+      <PhoneMock src={`${import.meta.env.BASE_URL}assets/screens/home_${lang}.jpg`} alt="nida home screen" width={230} tilt={-3} />
+      <div class="inside-phone2"><PhoneMock src={`${import.meta.env.BASE_URL}assets/screens/qibla_${lang}.jpg`} alt="nida qibla screen" width={230} tilt={3} /></div>
     </div>
   </div>
   </div>

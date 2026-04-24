@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   outDir: './docs',
-  base: '/nida-public',
+  base: '/nida-public/',
   trailingSlash: 'ignore',
 });
