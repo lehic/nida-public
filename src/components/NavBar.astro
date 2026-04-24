@@ -7,12 +7,12 @@ const { lang } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const langs = [
   { k: 'en', l: 'EN', href: base },
-  { k: 'fr', l: 'FR', href: `${base}fr/` },
-  { k: 'ar', l: 'عربي', href: `${base}ar/` },
+  { k: 'fr', l: 'FR', href: `${base}fr` },
+  { k: 'ar', l: 'عربي', href: `${base}ar` },
 ];
 ---
 <nav class="navbar" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:100px;direction:ltr">
-  <a href={lang === 'en' ? base : lang === 'fr' ? `${base}fr/` : `${base}ar/`} style="display:flex;align-items:center;gap:10px;text-decoration:none">
+  <a href={lang === 'en' ? base : lang === 'fr' ? `${base}fr` : `${base}ar`} style="display:flex;align-items:center;gap:10px;text-decoration:none">
     <Kaaba size={22} />
     <span style="font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-0.02em;color:#F8F6F0">nida</span>
   </a>
