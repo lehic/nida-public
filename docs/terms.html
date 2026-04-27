@@ -317,7 +317,6 @@
       <button class="lang-btn" onclick="show('id')" id="tab-id">Indonesia</button>
       <button class="lang-btn" onclick="show('ur')" id="tab-ur" style="font-family:'Noto Naskh Arabic',serif;font-size:13px">اردو</button>
       <button class="lang-btn" onclick="show('bn')" id="tab-bn">বাংলা</button>
-      <button class="lang-btn" onclick="show('es')" id="tab-es">Español</button>
     </div>
   </div>
 
@@ -616,48 +615,6 @@
       </div>
 
 
-      <!-- SPANISH -->
-      <div id="es" class="section" lang="es">
-        <span class="updated">Última actualización: 24 de abril de 2026</span>
-        <p>Al descargar o usar <strong>nida</strong>, aceptas estos Términos y Condiciones. Si no estás de acuerdo, por favor no uses la aplicación.</p>
-
-        <h2>1. Uso aceptable</h2>
-        <p>nida se proporciona para uso personal y no comercial. Te comprometes a no:</p>
-        <ul>
-          <li>Realizar ingeniería inversa, descompilar o desensamblar la aplicación</li>
-          <li>Usar la aplicación con fines ilegales</li>
-          <li>Redistribuir, revender o sublicenciar la aplicación</li>
-          <li>Intentar extraer los activos o el código fuente de la aplicación</li>
-        </ul>
-
-        <h2>2. Propiedad intelectual</h2>
-        <p>nida, su nombre, logotipo, diseño y todo el contenido son propiedad de Mehdi Mehni. Todos los derechos reservados. La aplicación se te licencia, no se te vende. Esta licencia es personal, intransferible y revocable.</p>
-
-        <h2>3. Donaciones</h2>
-        <p>nida es gratuita. Las donaciones realizadas a través de la aplicación o las plataformas vinculadas son completamente voluntarias y no reembolsables. <strong>Donar no te da derecho a funciones premium, soporte prioritario ni ningún trato especial.</strong> Todos los usuarios tienen acceso a la aplicación completa independientemente de su estado de donación.</p>
-
-        <h2>4. Aviso legal sobre los horarios de oración</h2>
-        <p>Los horarios de oración en nida se calculan algorítmicamente en función de tu ubicación y el método de cálculo seleccionado. Pueden diferir del horario de tu mezquita local o de fuentes de autoridades religiosas oficiales. <strong>nida no reemplaza la orientación religiosa verificada.</strong> Recomendamos consultar con tu mezquita local o un estudioso cualificado para obtener confirmación.</p>
-
-        <h2>5. Exclusión de garantías</h2>
-        <p>nida se proporciona <strong>"tal cual"</strong> sin garantía de ningún tipo, expresa o implícita, incluyendo, entre otras, garantías de comerciabilidad, idoneidad para un propósito particular o no infracción. No garantizamos que la aplicación sea ininterrumpida, libre de errores o libre de virus.</p>
-
-        <h2>6. Limitación de responsabilidad</h2>
-        <p>En la medida máxima permitida por la ley aplicable, Mehdi Mehni no será responsable de daños indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso o la imposibilidad de usar nida, incluso si se ha advertido de la posibilidad de dichos daños.</p>
-
-        <h2>7. Cambios en estos Términos</h2>
-        <p>Podemos actualizar estos Términos en cualquier momento publicando una versión revisada en esta página. El uso continuado de nida tras cualquier cambio constituye la aceptación de los Términos actualizados.</p>
-
-        <h2>8. Ley aplicable</h2>
-        <p>Estos Términos se rigen por las leyes de la Provincia de Quebec, Canadá, sin tener en cuenta los principios de conflicto de leyes.</p>
-
-        <h2>9. Contacto</h2>
-        <p>Para preguntas sobre estos Términos:<br>
-        <strong>Correo electrónico:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
-        <strong>Ubicación:</strong> Montreal, Quebec, Canadá</p>
-      </div>
-
-
     </div>
   </div>
 
@@ -692,7 +649,7 @@
     }
 
     const preferred = navigator.language.split('-')[0];
-    const supported = ['en', 'fr', 'ar', 'tr', 'id', 'ur', 'bn', 'es'];
+    const supported = ['en', 'fr', 'ar', 'tr', 'id', 'ur', 'bn'];
     show(supported.includes(preferred) ? preferred : 'en');
   </script>
 </body>

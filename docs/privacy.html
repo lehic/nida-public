@@ -344,7 +344,6 @@
       <button class="lang-btn" onclick="show('id')" id="tab-id">Indonesia</button>
       <button class="lang-btn" onclick="show('ur')" id="tab-ur" style="font-family:'Noto Naskh Arabic',serif;font-size:13px">اردو</button>
       <button class="lang-btn" onclick="show('bn')" id="tab-bn">বাংলা</button>
-      <button class="lang-btn" onclick="show('es')" id="tab-es">Español</button>
     </div>
   </div>
 
@@ -765,66 +764,6 @@
         <strong>অবস্থান:</strong> মন্ট্রিয়াল, কিউবেক, কানাডা</p>
       </div>
 
-      <div id="es" class="section" lang="es">
-        <span class="updated">Última actualización: 7 de abril de 2026</span>
-
-        <p><strong>nida</strong> es una aplicación de horarios de oración islámica desarrollada por Mehdi Mehni ("nosotros", "nos", "nuestro"). Estamos comprometidos con la protección de su privacidad. Esta política explica cómo nida gestiona sus datos.</p>
-
-        <h2>1. Datos que recopilamos</h2>
-        <p><strong>nida no recopila, almacena, transmite ni comparte ningún dato personal.</strong> No hay cuentas de usuario, ni análisis, ni publicidad, ni SDK de rastreo, ni procesamiento de datos en el servidor.</p>
-
-        <h2>2. Permisos del dispositivo</h2>
-        <p>nida puede solicitar los siguientes permisos del dispositivo, todos procesados localmente en su dispositivo:</p>
-        <table>
-          <tr><th>Permiso</th><th>Finalidad</th><th>Datos enviados a servidores</th></tr>
-          <tr><td>Ubicación</td><td>Calcular los horarios de oración precisos y la dirección de la Qibla según su posición</td><td>Ninguno — procesado solo en el dispositivo</td></tr>
-          <tr><td>Notificaciones</td><td>Enviar recordatorios locales en los horarios de oración</td><td>Ninguno — programado localmente</td></tr>
-          <tr><td>Alarmas exactas</td><td>Garantizar que las notificaciones de oración se activen en el momento exacto programado</td><td>Ninguno</td></tr>
-          <tr><td>Inicio del sistema</td><td>Reprogramar las notificaciones de oración tras un reinicio del dispositivo</td><td>Ninguno</td></tr>
-          <tr><td>Vibración</td><td>Retroalimentación háptica cuando la brújula de la Qibla se alinea con la dirección de La Meca</td><td>Ninguno</td></tr>
-        </table>
-
-        <h2>3. Almacenamiento local</h2>
-        <p>nida almacena sus preferencias (ciudad seleccionada, método de cálculo, idioma, configuración de notificaciones) localmente en su dispositivo mediante el almacenamiento estándar de la plataforma (SharedPreferences en Android, UserDefaults en iOS). Estos datos nunca abandonan su dispositivo y se eliminan cuando desinstala la aplicación.</p>
-
-        <h2>4. Servicios de terceros</h2>
-        <p>nida no integra ningún servicio, SDK ni biblioteca de terceros que recopile datos de los usuarios. La aplicación funciona completamente sin conexión.</p>
-
-        <h2>5. Compartir datos</h2>
-        <p>No compartimos ningún dato con terceros porque no recopilamos ningún dato.</p>
-
-        <h2>6. Privacidad de los menores</h2>
-        <p>nida no recopila datos de ningún usuario, incluidos los menores de 13 años (COPPA) o de 16 años (RGPD). La aplicación es segura para usuarios de todas las edades.</p>
-
-        <h2>7. Sus derechos</h2>
-        <p>De conformidad con las leyes de privacidad aplicables (incluidas el RGPD, la Ley 25 de Quebec y la CCPA), usted tiene derechos sobre sus datos personales. Dado que nida no recopila ningún dato personal, estos derechos se respetan de forma inherente:</p>
-        <ul>
-          <li><strong>Derecho de acceso:</strong> No se almacenan datos personales en nuestros servidores.</li>
-          <li><strong>Derecho de supresión:</strong> Desinstalar la aplicación elimina todas las preferencias almacenadas localmente.</li>
-          <li><strong>Derecho de portabilidad:</strong> No existen datos que transferir.</li>
-          <li><strong>Derecho de oposición:</strong> No se realiza ningún tratamiento de datos.</li>
-        </ul>
-
-        <h2>8. Seguridad de los datos</h2>
-        <p>Dado que no se transmiten ni almacenan datos en servidores, no existe riesgo de filtración de datos por nuestra parte. Sus preferencias se almacenan localmente en su dispositivo, protegidas por la seguridad integrada del mismo.</p>
-
-        <h2>9. Retención de datos</h2>
-        <p>Todos los datos se almacenan localmente en su dispositivo. No conservamos ningún dato en ningún servidor. Los datos locales se eliminan cuando desinstala la aplicación o borra los datos de la misma.</p>
-
-        <h2>10. Usuarios internacionales</h2>
-        <p>nida está disponible en todo el mundo. Dado que no se recopilan ni transfieren datos, no existen preocupaciones sobre transferencias internacionales de datos.</p>
-
-        <h2>11. Cambios en esta política</h2>
-        <p>Si modificamos esta política de privacidad, actualizaremos esta página con la nueva fecha de vigencia. Dado que no recopilamos ningún dato, es poco probable que haya cambios significativos. Le recomendamos revisar esta página periódicamente.</p>
-
-        <h2>12. Contacto</h2>
-        <p>Si tiene preguntas o inquietudes sobre esta política de privacidad, contáctenos en:<br>
-        <strong>Correo electrónico:</strong> <a href="mailto:mehdi.mehni@gmail.com" style="color:var(--gold)">mehdi.mehni@gmail.com</a><br>
-        <strong>Ubicación:</strong> Montreal, Quebec, Canadá</p>
-      </div>
-
-      <!-- FRENCH -->
-
     </div>
   </div>
 
@@ -859,7 +798,7 @@
     }
 
     const preferred = navigator.language.split('-')[0];
-    const supported = ['en', 'fr', 'ar', 'tr', 'id', 'ur', 'bn', 'es'];
+    const supported = ['en', 'fr', 'ar', 'tr', 'id', 'ur', 'bn'];
     show(supported.includes(preferred) ? preferred : 'en');
   </script>
 </body>
