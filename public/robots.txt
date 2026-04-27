@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lehic.github.io/nida-public/sitemap-index.xml
+Sitemap: https://nida.day/sitemap-index.xml

@@ -17,9 +17,9 @@ const baseUrl = `${Astro.site}${import.meta.env.BASE_URL}`;
 const ogImage = `${baseUrl}brand-kit/app-icon/app-icon-1024.png`;
 
 const altLinks = [
-  { lang: 'en', href: 'https://lehic.github.io/nida-public/' },
-  { lang: 'fr', href: 'https://lehic.github.io/nida-public/fr' },
-  { lang: 'ar', href: 'https://lehic.github.io/nida-public/ar' },
+  { lang: 'en', href: baseUrl },
+  { lang: 'fr', href: `${baseUrl}fr` },
+  { lang: 'ar', href: `${baseUrl}ar` },
 ];
 ---
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ const altLinks = [
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {altLinks.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
-  <link rel="alternate" hreflang="x-default" href="https://lehic.github.io/nida-public/" />
+  <link rel="alternate" hreflang="x-default" href={baseUrl} />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
