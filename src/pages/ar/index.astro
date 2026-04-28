@@ -31,7 +31,7 @@ const faqSchema = {
   canonical="https://nida.day/ar"
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:text={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </Fragment>
   <Hero t={t} lang={lang} />
   <RedLines t={t} />

@@ -52,7 +52,7 @@ const altLinks = [
   <meta name="twitter:image" content={ogImage} />
 
   <!-- JSON-LD: SoftwareApplication -->
-  <script type="application/ld+json" set:text={JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "nida",
@@ -65,7 +65,7 @@ const altLinks = [
   })} />
 
   <!-- JSON-LD: Organization -->
-  <script type="application/ld+json" set:text={JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "nida",
