@@ -27,6 +27,7 @@ const altLinks = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="zRklkNZfaixqonV1NmazJXF6H9G1xqoF6sMmE6jUHmE" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
@@ -50,18 +51,30 @@ const altLinks = [
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD: SoftwareApplication -->
   <script type="application/ld+json" set:text={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "nida",
-    "operatingSystem": "Android",
+    "operatingSystem": ["Android", "iOS"],
     "applicationCategory": "LifestyleApplication",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "description": description,
     "downloadUrl": "https://play.google.com/store/apps/details?id=com.nidaapp.nida",
-    "keywords": "prayer times, salah, athan, qibla, Islamic app, Muslim, offline, salat, namaz",
+    "keywords": "islamic prayer times, prayer times app, athan app, qibla, Muslim, offline, salat, namaz",
   })} />
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json" set:text={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "nida",
+    "url": "https://nida.day",
+    "logo": `${Astro.site}brand-kit/app-icon/app-icon-1024.png`,
+    "description": "nida is a free Islamic prayer times app — no ads, no data collection, works offline.",
+  })} />
+
+  <slot name="head" />
 
   <meta name="theme-color" content="#143E32" />
 </head>

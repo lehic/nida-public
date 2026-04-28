@@ -13,14 +13,26 @@ import { COPY } from '../../i18n/copy';
 
 const lang = 'fr';
 const t = COPY[lang];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 <Landing
   lang={lang}
   dir={t.dir}
   title="nida — Horaires de prière islamique, hors-ligne. Sans pub."
-  description="Aucune pub. Aucun bruit. Aucun jugement. Compagnon de prière hors-ligne avec Athan précis, Qibla et suivi des prières."
+  description="Application horaires de prière islamique gratuite — Athan précis, Qibla et suivi des prières. Sans pub, sans données, fonctionne hors-ligne."
   canonical="https://nida.day/fr"
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:text={JSON.stringify(faqSchema)} />
+  </Fragment>
   <Hero t={t} lang={lang} />
   <RedLines t={t} />
   <Pillars t={t} />

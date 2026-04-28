@@ -13,14 +13,26 @@ import { COPY } from '../../i18n/copy';
 
 const lang = 'ar';
 const t = COPY[lang];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: t.faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 <Landing
   lang={lang}
   dir={t.dir}
   title="نِدَاء — مواقيت الصلاة الإسلامية، بدون إنترنت. بلا إعلانات."
-  description="لا إعلانات. لا ضجيج. لا أحكام. رفيق صلاة يعمل دون إنترنت مع أذان دقيق وقبلة ومتابعة الصلوات."
+  description="تطبيق مواقيت الصلاة الإسلامية مجانًا — أذان دقيق وقبلة ومتابعة الصلوات. بلا إعلانات، بلا بيانات، يعمل دون إنترنت."
   canonical="https://nida.day/ar"
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:text={JSON.stringify(faqSchema)} />
+  </Fragment>
   <Hero t={t} lang={lang} />
   <RedLines t={t} />
   <Pillars t={t} />
