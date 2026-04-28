@@ -14,7 +14,7 @@ const faqSchema = {
   })),
 };
 ---
-<script type="application/ld+json" set:text={JSON.stringify(faqSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 <section class="faq-sec" style="padding:110px 60px;background:var(--nida-cream-deep)">
   <div style="max-width:900px;margin:0 auto">
     <div class="eyebrow" style="text-align:center">{faq.eyebrow}</div>

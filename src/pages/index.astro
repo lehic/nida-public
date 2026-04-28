@@ -13,15 +13,6 @@ import { COPY } from '../i18n/copy';
 
 const lang = 'en';
 const t = COPY[lang];
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: t.faq.items.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
-};
 ---
 <Landing
   lang={lang}
@@ -30,9 +21,6 @@ const faqSchema = {
   description="Free Islamic prayer times app — accurate Athan, Qibla & prayer tracking. No ads, no data collection, works offline."
   canonical="https://nida.day/"
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  </Fragment>
   <Hero t={t} lang={lang} />
   <RedLines t={t} />
   <Pillars t={t} />
