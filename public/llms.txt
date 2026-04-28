@@ -1,0 +1,18 @@
+# nida
+
+> Free Islamic prayer times app — accurate Athan, Qibla & prayer tracking. No ads, no data collection, works offline.
+
+nida calculates the 5 daily prayer times using GPS or a manually selected city, schedules local notifications, plays traditional Athan audio, and counts down to the next prayer. It supports multiple calculation methods (MWL, ISNA, Umm al-Qura, etc.) and Asr juristic methods (Shafi'i/Hanbali and Hanafi). No account required. No internet required after first launch.
+
+## Pages
+
+- [Home (EN)](https://nida.day/)
+- [Home (FR)](https://nida.day/fr)
+- [Home (AR)](https://nida.day/ar)
+- [Privacy Policy](https://nida.day/privacy.html)
+- [Terms of Use](https://nida.day/terms.html)
+
+## Download
+
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.nidaapp.nida)
+- [Apple App Store](https://apps.apple.com/app/nida-islamic-prayer-times/id6738731790)
