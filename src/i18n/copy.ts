@@ -98,7 +98,7 @@ const EN: Copy = {
     direct: {
       eyebrow: { ar: 'نِدَاء', latin: 'nidā · the call' },
       h1Parts: ['No ads', 'between ', 'you', ' and your salat.'],
-      sub: 'No ads. No noise. No judgment. Offline-first, fiqh-transparent, and nothing ever leaves your phone.',
+      sub: 'Accurate Islamic prayer times, Athan, and Qibla — with no ads, no tracking, and nothing ever leaving your phone.',
     },
   },
   pillars: {
@@ -181,7 +181,7 @@ const FR: Copy = {
     direct: {
       eyebrow: { ar: 'نِدَاء', latin: 'nidā · l\u2019appel' },
       h1Parts: ['Aucune pub', 'entre ', 'toi', ' et ta salat.'],
-      sub: 'Aucune pub. Aucun bruit. Aucun jugement. Hors-ligne d\u2019abord, transparent sur le fiqh, et rien ne quitte jamais ton téléphone.',
+      sub: 'Des horaires de prière islamique précis, l\u2019Athan et la Qibla — sans pub, sans tracking, et rien ne quitte jamais ton téléphone.',
     },
   },
   pillars: {
@@ -264,7 +264,7 @@ const AR: Copy = {
     direct: {
       eyebrow: { ar: 'نِدَاء', latin: 'nidā' },
       h1Parts: ['لا إعلانات', 'بين', 'ك', ' وبين صلاتك.'],
-      sub: 'لا إعلانات. لا ضجيج. لا أحكام. يعمل دون إنترنت، شفّاف في الفقه، ولا شيء يغادر هاتفك.',
+      sub: 'مواقيت صلاة إسلامية دقيقة، أذان وقبلة — بلا إعلانات، بلا تتبّع، ولا شيء يغادر هاتفك.',
     },
   },
   pillars: {
